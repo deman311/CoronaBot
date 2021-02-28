@@ -1,0 +1,9 @@
+name: Fireball
+sign: 🔥
+damage: 50
+mana: 20
+#
+name: Frost
+sign: ❄
+damage: 30
+mana: 10

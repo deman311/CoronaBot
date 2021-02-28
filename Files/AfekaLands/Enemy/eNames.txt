@@ -1,0 +1,11 @@
+Troll
+Gnome
+Dragon
+Elf
+Goblin
+Thief
+Giant
+Spider
+Witch
+Bat
+Boar

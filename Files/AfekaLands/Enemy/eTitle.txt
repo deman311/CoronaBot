@@ -1,0 +1,13 @@
+Angry
+Crazy
+Sad
+Laughing
+Dumb
+Enraged
+Wandering
+Lost
+Green
+Black
+Yellow
+Red
+White

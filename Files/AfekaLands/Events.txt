@@ -1,0 +1,35 @@
+This is a test for TEXT I!
+
+a) option a. | HP[-4] ENG[100] COIN[-6]
+b) option b.
+c) option c.
+d) option d.
+~
+A) ANSWER A
+B) ANSWER B
+
+###
+
+This is a test for TEXT II!
+
+a) option a. | Chance[100] HP[-10] ENG[50] COIN[20]
+b) option b. 
+c) option c.
+d) option d.
+~
+A) ANSWER A
+B) ANSWER B
+
+###
+
+You are walking down the forest and suddenly an arrow hits the tree trunk next to your head,
+an ugly GOBLIN is attacking you! 
+what do you do?
+
+a) Take out your sword and run towards the ugly bastard. | HP[-40] ENG[-20] COIN[6]
+b) Use a lightning spell. | ENG[-20] COIN[6]
+c) Try running away. | HP[-20] ENG[-10]
+~
+A) You take out your sword and rush at the Goblin but he is swift and just before you thrust your sword into his throat, he manages to shoot one more arrow at your shoulder. You find 6 coins in his pockets.
+B) You case a lightning spell and zap the Goblin right in his face, he screams as he is shocked and then falls dead. You find 6 coins in his pockets.
+C) You start running away through the nearest bushes as fast as you can, arrows hissing around you. After a short while you stop hearing anything but your fast panting after a long run.

@@ -1,0 +1,29 @@
+HEAD: Cap
+HEAD: Crown
+HEAD: Helmet
+HEAD: Robe
+HEAD: Thorn Cap
+
+TORSO: Leather Shirt
+TORSO: Steel Armor
+TORSO: Chain Mail
+TORSO: Wool Shirt
+TORSO: Pretty Shirt
+
+LEG: Leather Pants
+LEG: Chain Leggings
+LEG: Rags
+LEG: Battle Skirt
+LEG: Wool Pants
+
+BOOT: Leather Boots
+BOOT: Steel Boots
+BOOT: Wooden Boots
+BOOT: Leather Sandals
+BOOT: Pretty Sandals
+
+RING: Silver Ring
+RING: Gold Ring
+RING: Copper Ring
+RING: Wooden Ring
+RING: Stone Ring

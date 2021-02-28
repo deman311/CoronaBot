@@ -1,0 +1,31 @@
+
+#
+name: Death Machete
+price: 264
+damage: 132
+crit: 30 2
+description: Death Machete, is a sword with a Damage of 132, and a Critical Rate of 30 Damage with 2% Chance.
+#
+name: Weak Thin Excalibur
+price: 178
+damage: 138
+crit: 78 11
+description: Weak Thin Excalibur, is a sword with a Damage of 138, and a Critical Rate of 78 Damage with 11% Chance.
+#
+name: Death Machete
+price: 356
+damage: 198
+crit: 40 10
+description: Death Machete, is a sword with a Damage of 198, and a Critical Rate of 40 Damage with 10% Chance.
+#
+name: White Machete
+price: 380
+damage: 238
+crit: 37 12
+description: White Machete, is a sword with a Damage of 238, and a Critical Rate of 37 Damage with 12% Chance.
+#
+name: Weak Fast Toothpick
+price: 120
+damage: 84
+crit: 90 2
+description: Weak Fast Toothpick, is a sword with a Damage of 84, and a Critical Rate of 90 Damage with 2% Chance.

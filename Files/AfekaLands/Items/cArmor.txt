@@ -1,0 +1,12 @@
+#
+name: Cap
+description: Cap, is a HEAD with a Defense of 18
+price: 32
+def: 18
+type: HEAD
+#
+name: Battle Skirt
+description: Battle Skirt, is a LEG with a Defense of 36
+price: 64
+def: 36
+type: LEG
