@@ -25,6 +25,7 @@ abstract class Lectures {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		for (String seg : sb.toString().split("#")) {
 			if (seg.contains(name)) {
 				for (String seg2 : seg.split("@"))

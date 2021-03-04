@@ -50,12 +50,6 @@ public abstract class CoronaBot {
 	public static Character player1;
 	public static Enemy enemy1;
 	public static ArrayList<Shop> shops = new ArrayList<Shop>();
-	
-	
-	//THIS IS AN EDIT TEST
-	public static void test() {
-		System.out.println("TEST");
-	}
 
 	public static void main(String[] args) throws LoginException {
 		jda = JDABuilder.createDefault("Njg5NDU4MzcxNjM1ODM5MDU3.XnIFqQ.tWfb9btyVCCDUqxoMHJ5UWwZj8w").build();
@@ -78,66 +72,29 @@ public abstract class CoronaBot {
 
 		getAllUsers();
 		if (!LocalDate.now().getDayOfWeek().name().contentEquals("FRIDAY")
-				|| LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
+				|| !LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
 			sendDailyLinks();
-
-//		Thread timedMesseger = new Thread(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				try {
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				while (1 > 0) {
-//					// TextChannel mainChannel = jda.getTextChannelById("695172971269980220");
-//					Lectures.readLastRead();
-//					if (!Lectures.lastReadDate
-//							.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
-//						for (Entry<String, User> userEntry : users.entrySet()) {
-//							EmbedBuilder info = new EmbedBuilder();
-//							String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
-//							day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
-//							info.setTitle(day + " Links 🖥");
-//							info.setColor(Color.blue);
-//							info.setDescription(
-//									"Good morning " + userEntry.getKey() + " ♥😁" + "\nHere are your daily links:\n\n");
-//							info.appendDescription(
-//									Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name()));
-//							info.appendDescription("\n\nPlease tell me if you need anything else. 🙇‍♂️");
-//							users.get(userEntry.getKey()).openPrivateChannel().complete().sendMessage(info.build())
-//									.queue();
-//						}
-//						Lectures.writeLastRead();
-//					}
-//					try {
-//						Thread.sleep(30000);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//			}
-//		});
-//		timedMesseger.run();
 	}
-	
+
 	public static void sendDailyLinks() {
 		Lectures.readLastRead();
 		if (!Lectures.lastReadDate.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
 			for (Entry<String, User> userEntry : users.entrySet()) {
 				EmbedBuilder info = new EmbedBuilder();
 				String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
+				String body = Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name());
+				if (body == null || body.isEmpty())
+					break;
 				day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
 				info.setTitle(day + " Links 🖥");
 				info.setColor(Color.blue);
 				info.setDescription("Good morning " + userEntry.getKey() + " ♥😁" + "\nHere are your daily links:\n\n");
-				info.appendDescription(Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name()));
+				info.appendDescription(body);
 				info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
 				users.get(userEntry.getKey()).openPrivateChannel().complete().sendMessage(info.build()).queue();
+
 			}
+			Lectures.writeLastRead();
 		}
 	}
 
@@ -145,7 +102,7 @@ public abstract class CoronaBot {
 		users.put("Dima", jda.retrieveUserById("633662715792982026").complete());
 		users.put("Timor", jda.retrieveUserById("687978431299715148").complete());
 		users.put("Alon", jda.retrieveUserById("687980623419408445").complete());
-		// users.put("Elad", jda.retrieveUserById("688825751818207362").complete());
+		users.put("Elad", jda.retrieveUserById("688825751818207362").complete());
 		// users.put("Matan", jda.retrieveUserById("381344453966954517").complete());
 		return users;
 	}
