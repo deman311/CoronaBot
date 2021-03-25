@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalTime;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -21,7 +22,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -49,7 +52,8 @@ public class Responds extends ListenerAdapter {
 		Document doc = null;
 
 		String role = event.getMember().getRoles().toString();
-		String sender = event.getMember().getEffectiveName();
+		Member sender = event.getMember();
+		boolean isAdmin = event.getMember().getId().contains("633662715792982026");
 		String messageID = event.getMessageId();
 		String messageRaw = "";
 		if (!event.getAuthor().isBot())
@@ -127,6 +131,20 @@ public class Responds extends ListenerAdapter {
 
 		// --------------------------------------------------------------
 
+		if(event.getMember().getId().contains("633662715792982026") && messageRaw.contains("!seekVR")) {
+			CoronaBot.vrUpdates();
+		}
+		
+		if (event.getMessage().getContentRaw().split(" ")[0].contentEquals("!notifyRecievers:")
+				&& event.getMember().isOwner()) {
+			event.getMessage().delete().queue();
+			for (Entry<String, User> userEntry : CoronaBot.getAllUsers().entrySet())
+				userEntry.getValue().openPrivateChannel().complete()
+						.sendMessage(
+								"Hello " + userEntry.getKey() + "! ❤\n" + messageRaw.replace("!notifyRecievers: ", ""))
+						.queue();
+		}
+
 		if (messageRaw.equalsIgnoreCase("!coin")) {
 			if (rand.nextBoolean())
 				event.getChannel().sendMessage("HEADS").queue();
@@ -149,10 +167,10 @@ public class Responds extends ListenerAdapter {
 					spam.delete(1950, spam.length());
 			}
 
-			event.getChannel().sendMessage(sender + " SPAMS! \n" + spam.toString()).queue();
+			event.getChannel().sendMessage(sender.getEffectiveName() + " SPAMS! \n" + spam.toString()).queue();
 		}
 
-		if (messageRaw.indexOf("!! ") == 0 && sender.equals("Dima Grib")) {
+		if (messageRaw.indexOf("!! ") == 0 && isAdmin) {
 			calledBot = true;
 			String temp = messageRaw.substring(3);
 			event.getMessage().delete().queue();
@@ -172,19 +190,19 @@ public class Responds extends ListenerAdapter {
 				event.getChannel().sendMessage("Only once in a minute.").queue();
 		}
 
-		if (messageRaw.contains("bot silence ") && sender.contains("Dima")) {
+		if (messageRaw.contains("bot silence ") && isAdmin) {
 			calledBot = true;
 			BAN = messageRaw.replace("bot silence ", "");
 			event.getChannel().sendMessage(BAN + " silenced.").queue();
 		}
 
-		if (messageRaw.contains("bot stop silence") && sender.contains("Dima")) {
+		if (messageRaw.contains("bot stop silence") && isAdmin) {
 			calledBot = true;
 			BAN = null;
 			event.getChannel().sendMessage("Roger.").queue();
 		}
 
-		if (BAN != null && sender.contains(BAN)) {
+		if (BAN != null && sender.getEffectiveName().contains(BAN)) {
 			event.getChannel().deleteMessageById(messageID).queue();
 		}
 
@@ -222,12 +240,12 @@ public class Responds extends ListenerAdapter {
 					.queue();
 		}
 
-		if (messageRaw.contains("בוט מותר להיות מגעילים") && sender.contains("Dima")) {
+		if (messageRaw.contains("בוט מותר להיות מגעילים") && isAdmin) {
 			calledBot = true;
 			CoronaBot.grossEnable = true;
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage("איכס, כן בוס.").queue();
-		} else if (messageRaw.contains("בוט תביא את השרת") && sender.contains("Dima")) {
+		} else if (messageRaw.contains("בוט תביא את השרת") && isAdmin) {
 			java.util.List<Message> mesHis = event.getChannel().getHistory().getRetrievedHistory();
 			String MES;
 			for (Message mes : mesHis) {
@@ -334,6 +352,7 @@ public class Responds extends ListenerAdapter {
 
 		if (messageRaw.equalsIgnoreCase("!carquiz2")) {
 			try {
+				event.getChannel().sendTyping().queue();
 				doc = Jsoup.connect("https://www.generatormix.com/random-cars").get();
 				FileOutputStream os = new FileOutputStream("./car.jpg");
 				Elements es = doc.getElementsByClass("lazy thumbnail aspect-wide-contain");
@@ -571,7 +590,7 @@ public class Responds extends ListenerAdapter {
 		}
 
 		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "jenks")) {
-			if (!sender.equalsIgnoreCase("matan"))
+			if (!sender.getEffectiveName().equalsIgnoreCase("matan"))
 				try {
 					doc = Jsoup.connect("https://tenor.com/search/alisa-jenks-gifs").get();
 					Elements emts = doc.getElementsByClass("Gif").select("img");
@@ -637,7 +656,7 @@ public class Responds extends ListenerAdapter {
 			}
 		}
 
-		if (messageRaw.contains("דימה") && !messageRaw.contains("קדימה") && !sender.contains("Dima")
+		if (messageRaw.contains("דימה") && !messageRaw.contains("קדימה") && !sender.getEffectiveName().contains("Dima")
 				&& rand.nextInt(2) == 1) {
 			try {
 				doc = Jsoup.connect("https://tenor.com/search/ragnar-gifs").get();
@@ -749,7 +768,7 @@ public class Responds extends ListenerAdapter {
 						repeatCatcher = true;
 					} else if (CoronaBot.w == 3)
 						CoronaBot.w = 0;
-				} else if (haha.contains("חחחחח") && !sender.contains("Dima")) {
+				} else if (haha.contains("חחחחח") && !sender.getEffectiveName().contains("Dima")) {
 					CoronaBot.w = CoronaBot.w + 1;
 					if (CoronaBot.w == 1 && repeatCatcher == false) {
 						StringBuilder sb = new StringBuilder();
@@ -785,7 +804,7 @@ public class Responds extends ListenerAdapter {
 					}
 				} else {
 					event.getChannel().sendTyping().queue();
-					event.getChannel().sendMessage(NameRes.main(sender)).queue();
+					event.getChannel().sendMessage(NameRes.main(sender.getEffectiveName())).queue();
 					repeatCatcher = true;
 				}
 

@@ -1,4 +1,4 @@
-04/03/2021
+25/03/2021
 Timor/Dima~
 SUNDAY
 ° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/81963786038
@@ -7,10 +7,10 @@ SUNDAY
 @
 MONDAY
 ° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/85210706742
-° תקשורת מחשבים מעבדה: Unknown
+° תקשורת מחשבים - מעבדה: https://afeka.zoom.us/j/96452994150?pwd=aEgrQ1k1TGI3NU5GTTlBVFlwTWovdz09
 @
 WEDNESDAY
-° תקשורת מחשבים לתוכנה: https://us02web.zoom.us/j/86834957831?pwd=OGE4cjIvZDZ1SzQ5MkF4Q3N5K2kwdz09
+° תקשורת מחשבים: https://us02web.zoom.us/j/86834957831?pwd=OGE4cjIvZDZ1SzQ5MkF4Q3N5K2kwdz09
 ° מערכות הפעלה: https://us02web.zoom.us/j/88080239626?pwd=TDBvS1dGS2pqMEdMMmtNZy8yNndKQT09
 @
 THURSDAY
@@ -35,7 +35,7 @@ WEDNESDAY
 @
 THURSDAY
 ° שפות תכנות: https://us02web.zoom.us/j/83428367214 סיסמא: 854086
-° מערכות הפעלה: Unknown
+° מערכות הפעלה: https://us02web.zoom.us/j/88506618363?pwd=VlpkOTd5emxqSVlnR2FMSmxFa05wUT09
 #
 Elad~
 MONDAY
@@ -53,5 +53,5 @@ WEDNESDAY
 ° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/89064765624
 @
 THURSDAY
-° תקשורת מחשבים - מעבדה: to be updated.
+° תקשורת מחשבים מעבדה: to be updated.
 #

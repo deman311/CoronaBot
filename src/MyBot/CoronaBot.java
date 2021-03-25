@@ -3,16 +3,33 @@ package MyBot;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
+
+import org.apache.poi.wp.usermodel.HeaderFooterType;
+import org.apache.poi.xwpf.usermodel.UnderlinePatterns;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFHyperlinkRun;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRelation;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import AfekaLands.AfekaLandsController;
 import AfekaLands.Character;
@@ -67,6 +84,7 @@ public abstract class CoronaBot {
 		if (hasPlayer)
 			MapGen2.readMap();
 		Leaderboards.checkWrite();
+		PirateBot.start();
 
 		// ---------------------------------------------------
 
@@ -74,6 +92,115 @@ public abstract class CoronaBot {
 		if (!LocalDate.now().getDayOfWeek().name().contentEquals("FRIDAY")
 				|| !LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
 			sendDailyLinks();
+	}
+
+	public static void vrUpdates() {
+		try {
+			Scanner read = new Scanner(new File("./Files/VRTitles.txt"));
+			ArrayList<String> lastTitles = new ArrayList<String>();
+			StringBuilder sb = new StringBuilder();
+			while (read.hasNext()) {
+				sb.append(read.nextLine() + "\n");
+				sb.append(read.nextLine());
+				sb.append(read.nextLine());
+				lastTitles.add(sb.toString());
+				sb = new StringBuilder();
+			}
+			FileWriter write = new FileWriter(new File("./Files/VRTitles.txt"));
+			XWPFDocument wordFile = new XWPFDocument();
+			FileOutputStream out = new FileOutputStream(new File("C://Users/Dmitry Gribovsky/Desktop/VRUpdates.docx"));
+			Document data = null;
+			Elements rows = null;
+			Iterator<Element> games = null;
+
+			wordFile.createHeader(HeaderFooterType.DEFAULT).createParagraph().createRun().setText("© Dmitry Gribovsky");
+			XWPFRun run = wordFile.createParagraph().createRun();
+			run.setBold(true);
+			run.addTab();
+			run.addTab();
+			run.addTab();
+			run.addTab();
+			run.setFontSize(20);
+			run.setText("Pirated VR Games");
+			run = wordFile.getParagraphs().get(0).createRun();
+			run.setBold(false);
+
+			for (int j = 0; j < 3; j++) {
+				if (j == 0)
+					data = Jsoup.connect("https://cs.rin.ru/forum/viewforum.php?f=10").get();
+				else if (j == 1)
+					data = Jsoup.connect("https://cs.rin.ru/forum/viewforum.php?f=10&start=100").get();
+				else if (j == 2)
+					data = Jsoup.connect("https://cs.rin.ru/forum/viewforum.php?f=10&start=200").get();
+
+				rows = data.getElementsByClass("topictitle");
+				games = rows.iterator();
+				int i = 0;
+
+				while (games.hasNext()) {
+					if (i < 10) {
+						games.next();
+						i++;
+					} else {
+						Element game = games.next();
+						String link;
+						if (game.text().contains("VR Only") || game.text().contains("VR Optional")) {
+							link = "https://cs.rin.ru/forum/" + game.parents().select("a").attr("href").substring(2);
+							sb.append(game.text() + "\n" + link + "\n\n");
+							
+							run.addCarriageReturn();
+							run.addCarriageReturn();
+
+							boolean found = false;
+							for (String title : lastTitles)
+								if (title.contains(game.text()))
+									found = true;
+
+							if (found)
+								run.setText("☠ " + game.text().replace("[Info] ", "") + " --- ");
+							else {
+								XWPFRun run2 = wordFile.getParagraphs().get(0).createRun();
+								run2.setColor("F71616");
+								run2.setBold(true);
+								run2.setText("☠ " + game.text().replace("[Info] ", "") + " --- ");
+								run = wordFile.getParagraphs().get(0).createRun();
+							}
+							XWPFHyperlinkRun hlink = createHyperlinkRun(wordFile.getParagraphs().get(0), link);
+							hlink.setText("Forum Link");
+							hlink.setColor("0000FF");
+							hlink.setUnderline(UnderlinePatterns.SINGLE);
+							run = wordFile.getParagraphs().get(0).createRun();
+						}
+					}
+				}
+			}
+			write.append(sb.toString());
+			wordFile.write(out);
+			wordFile.close();
+			read.close();
+			write.flush();
+			write.close();
+			System.err.println("[VR Seeker] File Updated.");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static XWPFHyperlinkRun createHyperlinkRun(XWPFParagraph paragraph, String uri) {
+		String rId = paragraph.getDocument().getPackagePart()
+				.addExternalRelationship(uri, XWPFRelation.HYPERLINK.getRelation()).getId();
+
+		org.openxmlformats.schemas.wordprocessingml.x2006.main.CTHyperlink cthyperLink = paragraph.getCTP()
+				.addNewHyperlink();
+		cthyperLink.setId(rId);
+		cthyperLink.addNewR();
+
+		return new XWPFHyperlinkRun((org.openxmlformats.schemas.wordprocessingml.x2006.main.CTHyperlink) cthyperLink,
+				cthyperLink.getRArray(0), paragraph);
 	}
 
 	public static void sendDailyLinks() {
@@ -99,6 +226,7 @@ public abstract class CoronaBot {
 	}
 
 	public static Map<String, User> getAllUsers() {
+		users.clear();
 		users.put("Dima", jda.retrieveUserById("633662715792982026").complete());
 		users.put("Timor", jda.retrieveUserById("687978431299715148").complete());
 		users.put("Alon", jda.retrieveUserById("687980623419408445").complete());
