@@ -131,10 +131,16 @@ public class Responds extends ListenerAdapter {
 
 		// --------------------------------------------------------------
 
-		if(event.getMember().getId().contains("633662715792982026") && messageRaw.contains("!seekVR")) {
-			CoronaBot.vrUpdates();
+		// ADMIN COMNMANDS
+
+		if (event.getMember().getId().contains("633662715792982026")) {
+
+			if (messageRaw.contains("!seekVR"))
+				CoronaBot.vrUpdates();
 		}
-		
+
+		// --------------------------------------------------------------
+
 		if (event.getMessage().getContentRaw().split(" ")[0].contentEquals("!notifyRecievers:")
 				&& event.getMember().isOwner()) {
 			event.getMessage().delete().queue();

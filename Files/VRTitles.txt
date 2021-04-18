@@ -1,60 +1,90 @@
-[Info] rFactor 2 [VR Optional]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=64323&sid=f141d5d509891253bfbbdbd6b2b46eb1
+[Info] No Man's Sky [VR Optional, Vive/Rift]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=68098&sid=9f21097b19cefc0277fc0a15ab9d86df
 
-[Info] Microsoft Flight Simulator [VR Optional]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=97673&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] Assetto Corsa [VR Optional, Vive/Rift]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=63798&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] Cosmodread (VR Only, Index/Vive/Rift/WMR)
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=112282&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] Blood Trail [VR Only, HTC Vive/Oculus Rift]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=95858&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] Half-Life: Alyx [VR Only, Rift/Vive/Index/SteamVR]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=102225&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] PAYDAY 2 [VR Optional, Vive/Rift]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=63116&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] Propagation VR [VR Only, Index/Vive/Rift/WMR]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=107554&sid=f141d5d509891253bfbbdbd6b2b46eb1
-
-[Info] All-In-One Sports VR [VR Only, Rift, Vive, Index, WMR]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=111799&sid=afaafdab7095a9363113d4c12dabc8dd
-
-[Info] Beat Saber [VR Only, Index/Vive/Rift/WMR/Quest]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=87553&sid=afaafdab7095a9363113d4c12dabc8dd
-
-[Info] Slotracers VR [VR Only, Vive, Rift, Index]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=111911&sid=afaafdab7095a9363113d4c12dabc8dd
-
-[Info] Malicious Payload [VR Only]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=103500&sid=afaafdab7095a9363113d4c12dabc8dd
+[Info] Drunkn Bar Fight on Halloween [VR Only, Vive/Rift/WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=93127&sid=9f21097b19cefc0277fc0a15ab9d86df
 
 [Info] Medal of Honor: Above and Beyond [VR Only, Index/Vive/Rift]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=100599&sid=afaafdab7095a9363113d4c12dabc8dd
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=100599&sid=9f21097b19cefc0277fc0a15ab9d86df
 
-[Info] Low-Fi [VR Optional, Oculus Rift/Vive/Index/WMR/SteamVR]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=101296&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+[Info] Pitch Hit BaseBall (VR Only | HTC VIVE)
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=74637&sid=9f21097b19cefc0277fc0a15ab9d86df
 
-[Info] Days of Heroes: D-Day [VR Only, Oculus Rift/Vive/SteamVR]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=112023&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+[Info] VR Squash 2017 [VR Only, Vive]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=84842&sid=9f21097b19cefc0277fc0a15ab9d86df
 
-[Info] BONEWORKS (VR Only, Vive / Rift / WMR)
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=95312&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+[Info] Microsoft Flight Simulator [VR Optional]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=97673&sid=9f21097b19cefc0277fc0a15ab9d86df
 
-[Info] Project CARS 2 (ONLINE) [VR Optional, Vive/Rift]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=68146&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+[Info] All-In-One Sports VR [VR Only, Rift, Vive, Index, WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=111799&sid=9f21097b19cefc0277fc0a15ab9d86df
 
-[Info] Until You Fall [VR Only, Index/Vive/Rift/WMR/Quest]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=98417&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+[Info] Kitchen Island VR [VR Only, Vive/Rift/Index/WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=112427&sid=9f21097b19cefc0277fc0a15ab9d86df
+
+[Info] Pavlov VR [VR Only, Vive/Rift] [Early Access]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=81631&sid=9f21097b19cefc0277fc0a15ab9d86df
+
+[Info] Floor Plan 2 [VR Only, Vive/Rift/Index/WMR/Quest]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=112449&sid=9f21097b19cefc0277fc0a15ab9d86df
+
+[Info] Slotracers VR [VR Only, Vive, Rift, Index]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=111911&sid=9f21097b19cefc0277fc0a15ab9d86df
+
+[Info] Budget Cuts (VR Only, Vive/Oculus Rift)
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=89592&sid=9f21097b19cefc0277fc0a15ab9d86df
+
+[Info] Beat Saber [VR Only, Index/Vive/Rift/WMR/Quest]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=87553&sid=9f21097b19cefc0277fc0a15ab9d86df
+
+[Info] GORN (VR Only, Vive/Rift)
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=81917&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Phasmophobia [VR Optional, Rift/Vive/Index/WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=107692&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] cyubeVR [VR Only, Vive / Rift / Index / WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=86513&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Yupitergrad [VR Only, Index/Vive/Rift]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=107514&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Hoops Madness [VR Only, Rift/Vive/Index]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=107672&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Hyperstacks [VR Only, PC/Quest]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=112564&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Cubism [VR Only, Index/Vive/Rift/WMR/Quest]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=108106&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Hop Step Sing! Series (Fan Club) [VR Only, Index/Vive]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=81981&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Zaccaria Pinball [VR Optional, Vive / Rift]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=72437&sid=485537225a33a07c8663f163fb249c8b
+
+[Info] Crisis VRigade 2 [VR Only Vive/Rift/Index/WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=105635&sid=c19892750dc0dda5780441a6ced05b44
+
+[Info] VR Paradise [VR Only, VIVE/INDEX/RIFT/WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=95526&sid=c19892750dc0dda5780441a6ced05b44
 
 [Info] Subnautica [VR Optional, Index/Vive/Rift]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=66162&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=66162&sid=c19892750dc0dda5780441a6ced05b44
 
-[Info] HINGE: EPISODE 1 [VR Only, Index/Vive/Rift/WMR]
-https://cs.rin.ru/forum/viewtopic.php?f=10&t=110217&sid=f9f7e1ec8b2622bc797f6b0f6fd20b54
+[Info] SKYBOX VR Video Player [VR Only, Rift/Quest/Vive/Index/WMR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=110891&sid=c19892750dc0dda5780441a6ced05b44
+
+[Info] Sprint Vector [VR Only, Vive/Rift]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=86889&sid=c19892750dc0dda5780441a6ced05b44
+
+[Info] OceanCraft [VR Only, Vive, Index, Rift]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=111961&sid=c19892750dc0dda5780441a6ced05b44
+
+[Info] Bus Driver Simulator (VR Optional, Rift)
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=86619&sid=c19892750dc0dda5780441a6ced05b44
+
+[Info] Half-Life: Alyx [VR Only, Rift/Vive/Index/SteamVR]
+https://cs.rin.ru/forum/viewtopic.php?f=10&t=102225&sid=c19892750dc0dda5780441a6ced05b44
 

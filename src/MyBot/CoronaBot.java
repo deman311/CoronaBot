@@ -47,7 +47,7 @@ import net.dv8tion.jda.api.entities.User;
 
 public abstract class CoronaBot {
 
-	// CORONABOT VERSION 0.3.8.3
+	// CORONABOT VERSION 0.3.9.2
 
 	public static JDA jda;
 	public static String prefix = "!";
@@ -147,7 +147,7 @@ public abstract class CoronaBot {
 						if (game.text().contains("VR Only") || game.text().contains("VR Optional")) {
 							link = "https://cs.rin.ru/forum/" + game.parents().select("a").attr("href").substring(2);
 							sb.append(game.text() + "\n" + link + "\n\n");
-							
+
 							run.addCarriageReturn();
 							run.addCarriageReturn();
 
