@@ -29,3 +29,16 @@ price: 120
 damage: 84
 crit: 90 2
 description: Weak Fast Toothpick, is a sword with a Damage of 84, and a Critical Rate of 90 Damage with 2% Chance.
+
+#
+name: Trash Death Slicer
+price: 0
+damage: 4
+crit: 10 17
+description: Trash Death Slicer, is a sword with a Damage of 4, and a Critical Rate of 10 Damage with 17% Chance.
+#
+name: White Blade
+price: 3
+damage: 19
+crit: 3 5
+description: White Blade, is a sword with a Damage of 19, and a Critical Rate of 3 Damage with 5% Chance.

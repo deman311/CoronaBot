@@ -38,7 +38,7 @@ public class AfekaLandsController extends ListenerAdapter {
 		String messageRaw = event.getMessage().getContentRaw();
 		String messageID = event.getMessageId();
 
-		if (has_Player)
+		if (has_Player && player1 != null)
 			if (player1.getHP() == 0) {
 				deadPlayer = true;
 				activeFight = false;
@@ -90,13 +90,11 @@ public class AfekaLandsController extends ListenerAdapter {
 			if (messageRaw.contains("@fight") && !activeFight) {
 				activeFight = true;
 				event.getChannel().sendMessage(AfekaLandsUI.fightMenu(enemy1)).queue();
-				;
 			}
 
 			if (event.getMessage().getContentRaw().contains("@event")) {
 				event.getChannel().sendTyping().queue();
 				event.getChannel().sendMessage(Events.getEvent()).queue();
-				;
 			}
 
 			if (messageRaw.contains("@answer: ")) {
@@ -195,10 +193,10 @@ public class AfekaLandsController extends ListenerAdapter {
 
 		if (event.getMessage().getContentRaw().contains("@status")) {
 			event.getChannel().deleteMessageById(messageID).queue();
-			String[] Char = null;
-			statusID = event.getMessageId();
-			Char = AfekaLandsUI.getStatus();
 			try {
+				String[] Char = null;
+				statusID = event.getMessageId();
+				Char = AfekaLandsUI.getStatus();
 				if (player1.getHP() == 0)
 					event.getChannel().sendMessage("🌟 Character Status 🌟\n" + "💀 " + Char[0] + " is DEAD. 💀")
 							.queue();
@@ -211,7 +209,7 @@ public class AfekaLandsController extends ListenerAdapter {
 									+ player1.getENG() + "/" + player1.getMaxENG() + "\n" + "🛡 Defense: "
 									+ player1.getDEF() + "\n" + "🔪 Damage: " + player1.getDMG())
 							.queue();
-			} catch (ArrayIndexOutOfBoundsException e) {
+			} catch (NullPointerException e) {
 				event.getChannel().sendMessage("No Character. Please create one using the command - @create: [name]")
 						.queue();
 			}
@@ -470,6 +468,14 @@ public class AfekaLandsController extends ListenerAdapter {
 									if (slot.getSort() == Sort.WEAPON) {
 										Weapon wep = (Weapon) slot;
 										player1.putIn(wep);
+										player1.takeOut(Sort.COIN, slot.getPrice());
+										currentShop.removeInv(slot.getName());
+										event.getChannel().sendMessage("Successfully bought " + slot.getName() + ".")
+												.queue();
+										break;
+									} else if (slot.getSort() == Sort.ARMOR) {
+										Armor arm = (Armor) slot;
+										player1.putIn(arm);
 										player1.takeOut(Sort.COIN, slot.getPrice());
 										currentShop.removeInv(slot.getName());
 										event.getChannel().sendMessage("Successfully bought " + slot.getName() + ".")
@@ -744,7 +750,6 @@ public class AfekaLandsController extends ListenerAdapter {
 			readFile = new Scanner(file);
 			name = readFile.nextLine().replace("NAME: ", "");
 			CREATOR = readFile.nextLine().replace("CREATOR: ", "");
-			AfekaLandsController.setHasPlayer(true);
 			player1 = new Character(name, CREATOR);
 			player1.setLevel(Integer.parseInt(readFile.nextLine().replace("LEVEL: ", "")));
 			player1.setHP(Integer.parseInt(readFile.nextLine().replace("HP: ", "")));
@@ -773,11 +778,12 @@ public class AfekaLandsController extends ListenerAdapter {
 					player1.putIn(two[0], Integer.parseInt(two[1]));
 			}
 			player1.updateStatus();
+			AfekaLandsController.setHasPlayer(true);
 			System.out.println("CURRENT PLAYER NAME: " + player1.getName());
 			readFile.close();
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException | ArrayIndexOutOfBoundsException e) {
 			System.out.println("ERROR: Character.txt not found!");
-			e.printStackTrace();
+			AfekaLandsController.setHasPlayer(false);
 		} catch (NoSuchElementException e) {
 			AfekaLandsController.setHasPlayer(false);
 			return null;
@@ -789,8 +795,8 @@ public class AfekaLandsController extends ListenerAdapter {
 		File file = new File("./Files/AfekaLands/Enemy/Enemy.txt");
 		try {
 			Scanner readFile = new Scanner(file);
-			if (readFile.nextLine() != null)
-				AfekaLandsController.setHasPlayer(true);
+//			if (readFile.nextLine() != null)
+//				AfekaLandsController.setHasPlayer(true);
 			readFile.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("ERROR: Character.txt not found!");

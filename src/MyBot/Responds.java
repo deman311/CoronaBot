@@ -5,14 +5,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
-import java.net.URLConnection;
 import java.time.LocalTime;
 import java.util.Map.Entry;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
@@ -32,7 +32,7 @@ public class Responds extends ListenerAdapter {
 
 	private static Random rand = new Random();
 	private String BAN;
-	private static int lastTimeVladSpam, lastTimeSpam;
+	private static int lastTimeVladSpam, lastTimeSpam, searchThreadsRunning = 0;
 	private String carAnswer, carFormat;
 	private static boolean repeatCatcher;
 	private static GuildMessageReceivedEvent event;
@@ -65,6 +65,7 @@ public class Responds extends ListenerAdapter {
 
 		if (!event.getAuthor().isBot())
 			try {
+
 				replyTo("!matan", "if(opinion==a)\n   Matan.setOpinion(!a);");
 				replyTo("https://tenor.com/view/ejaculation-explosion-cumming-fall-ejaculating-gif-12807230",
 						"https://tenor.com/view/spongebob-daddis-cummies-mayonnaise-spongebob-movie-gif-15569327");
@@ -85,44 +86,44 @@ public class Responds extends ListenerAdapter {
 				if (time.getHour() > 6 && time.getHour() < 10)
 					replyTo("בוקר", GetText.GetRandomText("BokerTov"));
 
-				String[] names = { "דימה", "טימור", "אלון", "אלעד", "מתן", "דמיטרי", "בן הגבר" };
-				for (String name : names)
-					if (messageRaw.contains(name) && event.getMessage().getMentionedMembers().isEmpty()) {
-						String res = null;
-						switch (name) {
-						case "דימה":
-							if (messageRaw.contains("קדימה"))
-								return;
-							res = "<@633662715792982026>";
-							break;
-						case "טימור":
-							res = "<@687978431299715148>";
-							break;
-						case "אלון":
-							if (messageRaw.contains("שאלון"))
-								return;
-							res = "<@687980623419408445>";
-							break;
-						case "אלעד":
-							res = "<@688825751818207362>";
-							break;
-						case "מתן":
-							res = "<@381344453966954517>";
-							break;
-						case "דמיטרי":
-							res = "<@442013487221309471>";
-							break;
-						case "בן הגבר":
-							res = "<@312878485230321665>";
-							break;
-						}
-						event.getChannel().sendMessage(res).queue();
-					}
+//				String[] names = { "דימה", "טימור", "אלון", "אלעד", "מתן", "דמיטרי", "בן הגבר" };
+//				for (String name : names)
+//					if (messageRaw.contains(name) && event.getMessage().getMentionedMembers().isEmpty()) {
+//						String res = null;
+//						switch (name) {
+//						case "דימה":
+//							if (messageRaw.contains("קדימה"))
+//								return;
+//							res = "<@633662715792982026>";
+//							break;
+//						case "טימור":
+//							res = "<@687978431299715148>";
+//							break;
+//						case "אלון":
+//							if (messageRaw.contains("שאלון"))
+//								return;
+//							res = "<@687980623419408445>";
+//							break;
+//						case "אלעד":
+//							res = "<@688825751818207362>";
+//							break;
+//						case "מתן":
+//							res = "<@381344453966954517>";
+//							break;
+//						case "דמיטרי":
+//							res = "<@442013487221309471>";
+//							break;
+//						case "בן הגבר":
+//							res = "<@312878485230321665>";
+//							break;
+//						}
+//						event.getChannel().sendMessage(res).queue();
+//					}
 
 				String[] namesBig = { "טימור", "אלעד", "מתן", "אירנה", "אלוהים", "חן", "אלון", "דימיטרי", "ויקטור",
-						"טינץ" };
+						"טינץ", "אביעד"};
 				for (String name : namesBig)
-					if (args[0].contains(name))
+					if (args[0].equalsIgnoreCase(name))
 						replyTo(name, GetText.GetRandomText(name, "ResToCall"), 2);
 
 			} catch (Exception e) {
@@ -137,9 +138,55 @@ public class Responds extends ListenerAdapter {
 
 			if (messageRaw.contains("!seekVR"))
 				CoronaBot.vrUpdates();
+
+			if (messageRaw.contains("!piratealert: "))
+				initGameSearch(messageRaw.replace("!piratealert: ", ""));
+
+			if (messageRaw.contains("!senddailylinks: "))
+				CoronaBot.sendDailyLinks(messageRaw.replace("!senddailylinks: ", ""));
+			
+			if (messageRaw.contains("!say ")) {
+				event.getChannel().deleteMessageById(messageID).queue();
+				event.getChannel().sendMessage(messageRaw.replace("!say ", "")).queue();
+			}
+			
 		}
 
 		// --------------------------------------------------------------
+
+		if (messageRaw.contains("!viziner ")) {
+			try {
+				String[] data = messageRaw.split(" ");
+				event.getChannel().sendMessage(vizinerCyper(data[1], data[2])).queue();
+			} catch (ArrayIndexOutOfBoundsException e) {
+				event.getChannel().sendMessage("Wrong format! (!visino [word] [key])").queue();
+			}
+		}
+
+		if (messageRaw.contains("!deviziner ")) {
+			try {
+				String[] data = messageRaw.split(" ");
+				event.getChannel().sendMessage(vizinerDecyper(data[1], data[2])).queue();
+			} catch (ArrayIndexOutOfBoundsException e) {
+				event.getChannel().sendMessage("Wrong format! (!devisino [cypered word] [key])").queue();
+			}
+		}
+
+		if (messageRaw.contains("!prnt")) {
+			event.getChannel().sendMessage("------------------[AUTOMATIC PRNT.COM GENERATOR!]-------------------")
+					.queue();
+			for (int k = 0; k < 5; k++) {
+				String rHexa = "";
+				for (int i = 0; i < 6; i++) {
+					int j = rand.nextInt(35);
+					if (j <= 25)
+						rHexa += (char) (j + 'a');
+					else
+						rHexa += "" + (j - 26);
+				}
+				event.getChannel().sendMessage("https://prnt.sc/" + rHexa).queue();
+			}
+		}
 
 		if (event.getMessage().getContentRaw().split(" ")[0].contentEquals("!notifyRecievers:")
 				&& event.getMember().isOwner()) {
@@ -242,7 +289,8 @@ public class Responds extends ListenerAdapter {
 			calledBot = true;
 			event.getMessage().delete().queue();
 			event.getChannel().sendTyping().queue();
-			event.getChannel().sendMessage("Janitor activated, gross GIF deleted.\nStop being so gross " + sender + ".")
+			event.getChannel().sendMessage(
+					"Janitor activated, gross GIF deleted.\nStop being so gross " + sender.getEffectiveName() + ".")
 					.queue();
 		}
 
@@ -283,88 +331,57 @@ public class Responds extends ListenerAdapter {
 			} while (flag);
 		}
 
-		if (messageRaw.equalsIgnoreCase("!carquiz")) {
-			calledBot = true;
-			boolean flag;
-			String car, imgLink, link;
-			int TRY = 0;
-			do {
-				TRY++;
-				flag = false;
-				try {
-					doc = Jsoup.connect("https://www.automobile-catalog.com/simulation.php").get();
-					link = doc.getElementsByAttributeValue("title", "photo of the moment").first().absUrl("src");
-					link = link.replace("https://www.automobile-catalog.com/img/picto30/", "");
-					link = "wikipedia " + link.substring(link.indexOf("/") + 1).replace(".JPG", "").replace(".jpg", "")
-							.replace(".png", "");
-					Document doc2 = Jsoup.connect("https://www.google.com/search?q=" + link).get();
-					imgLink = doc2.getElementsByAttributeValueContaining("href", "wikipedia.org").first()
-							.absUrl("href");
-					car = Jsoup.connect(imgLink).get().select("table").first().select("img").first().absUrl("src");
-					System.out.println(link);
-
-					URL url = new URL(car);
-					URLConnection uc = url.openConnection();
-					OutputStream os = null;
-
-					if (car.contains(".svg"))
-						throw new NullPointerException();
-
-					else if (car.contains(".jpg") || car.contains(".JPG")) {
-						os = new FileOutputStream("./car.jpg");
-						carFormat = "jpg";
-					} else if (car.contains(".png")) {
-						os = new FileOutputStream("./car.png");
-						carFormat = "png";
-					}
-
-					byte[] b = new byte[2048];
-					int length;
-
-					while ((length = uc.getInputStream().read(b)) != -1)
-						os.write(b, 0, length);
-
-					os.close();
-
-					BufferedImage carImg = ImageIO.read(new FileInputStream("./car.jpg"));
-					BufferedImage carCropped = carImg.getSubimage((int) carImg.getWidth() / 3, 0,
-							(int) carImg.getWidth() - (int) carImg.getWidth() / 3,
-							(int) carImg.getHeight() - (int) carImg.getHeight() / 3);
-
-					OutputStream co = new FileOutputStream("./carCropped." + carFormat);
-					if (!ImageIO.write(carCropped, carFormat, co))
-						System.out.println("DID NOT WRITE");
-					event.getChannel().sendFile(new File("./carCropped." + carFormat)).queue();
-
-					carAnswer = link.replace("wikipedia ", "");
-					co.close();
-
-				} catch (IOException e) {
-					flag = true;
-					e.printStackTrace();
-				} catch (NullPointerException e) {
-					flag = true;
-					if (TRY < 2)
-						event.getChannel().sendMessage("Could not get, Retrying...").queue();
-				}
-			} while (flag);
-		}
-
 		if (messageRaw.equalsIgnoreCase("!carAnswer") && carAnswer != null) {
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage(carAnswer).queue();
 			event.getChannel().sendFile(new File("./car." + carFormat)).queue();
 		}
 
-		if (messageRaw.equalsIgnoreCase("!carquiz2")) {
+		if (messageRaw.equalsIgnoreCase("!clearcars")) {
+			FileWriter fw;
+			try {
+				fw = new FileWriter(new File("./Files/carBanList.txt"));
+				fw.write("");
+				fw.close();
+				event.getChannel().sendTyping().queue();
+				event.getChannel().sendMessage("Car ban list have been cleared!").queue();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		if (messageRaw.equalsIgnoreCase("!carquiz")) {
 			try {
 				event.getChannel().sendTyping().queue();
-				doc = Jsoup.connect("https://www.generatormix.com/random-cars").get();
-				FileOutputStream os = new FileOutputStream("./car.jpg");
-				Elements es = doc.getElementsByClass("lazy thumbnail aspect-wide-contain");
-				Element sCar = es.get(rand.nextInt(es.size()));
+				boolean isBanned;
+				int counter = 0;
+				FileOutputStream os;
+				Element sCar;
+				do {
+					isBanned = false;
+					counter++;
+					doc = Jsoup.connect("https://www.generatormix.com/random-car-model-generator").get();
+					os = new FileOutputStream("./car.jpg");
+					sCar = doc.getElementsByClass("lazy thumbnail aspect-wide-contain").first();
+
+					// Create a ban list
+					Scanner banList = new Scanner(new File("./Files/carBanList.txt"));
+					while (banList.hasNextLine())
+						if (banList.nextLine().contains(sCar.absUrl("data-src")))
+							isBanned = true;
+
+					if (counter > 5000) {
+						banList.close();
+						throw new IOException();
+					}
+					banList.close();
+				} while (isBanned);
 				String link = sCar.absUrl("data-src");
 				InputStream linkConnection = new URL(link).openConnection().getInputStream();
+				FileWriter fw = new FileWriter(new File("./Files/carBanList.txt"), true);
+				fw.write(sCar.absUrl("data-src") + "\n");
+				fw.close();
 				byte[] b = new byte[2048];
 				int length;
 				while ((length = linkConnection.read(b)) != -1)
@@ -381,7 +398,10 @@ public class Responds extends ListenerAdapter {
 
 				event.getChannel().sendFile(new File("./carCropped.jpg")).queue();
 
-				carAnswer = sCar.attr("alt");
+				carAnswer = Jsoup.connect("https://yandex.com/images/search?rpt=imageview&url=" + link).get()
+						.getElementsByClass("CbirObjectResponse-Title").text();
+				if (carAnswer.isEmpty())
+					carAnswer = sCar.attr("alt");
 				carFormat = "jpg";
 
 			} catch (IOException e) {
@@ -434,7 +454,7 @@ public class Responds extends ListenerAdapter {
 				doc = Jsoup.connect(
 						"https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%95%D7%97%D7%93:%D7%90%D7%A7%D7%A8%D7%90%D7%99")
 						.get();
-				data = doc.select("p").first().wholeText();
+				data = doc.getElementById("mw-content-text").select("p").first().wholeText();
 				pic = doc.getElementsByClass("infobox").select("img");
 				if (pic.first().absUrl("alt").contains("קריאת טבלת מיון"))
 					picurl = pic.get(1).absUrl("src");
@@ -606,14 +626,14 @@ public class Responds extends ListenerAdapter {
 					} while (img.contains(
 							"https://tenor.com/assets/img/gif-maker-entrypoints/search-entrypoint-desktop.gif"));
 					event.getChannel().deleteMessageById(messageID).queue();
-					event.getChannel().sendMessage("Just for you " + sender + " ♥").queue();
+					event.getChannel().sendMessage("Just for you " + sender.getEffectiveName() + " ♥").queue();
 					event.getChannel().sendMessage(img).queue();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			else {
-				event.getChannel().sendMessage("Just for you " + sender + " ♥").queue();
+				event.getChannel().sendMessage("Just for you " + sender.getEffectiveName() + " ♥").queue();
 				event.getChannel().sendMessage("https://tenor.com/view/kots-straal-spugen-vomit-puke-gif-14891152")
 						.queue();
 			}
@@ -770,6 +790,12 @@ public class Responds extends ListenerAdapter {
 							event.getChannel()
 									.sendMessage("https://tenor.com/view/jerry-funny-animal-laughing-gif-13124924")
 									.queue();
+							break;
+						case 4:
+							event.getChannel()
+									.sendMessage("https://media.tenor.co/videos/c3e1b18cfb944d6137094a2b457ec30b/mp4")
+									.queue();
+							break;
 						}
 						repeatCatcher = true;
 					} else if (CoronaBot.w == 3)
@@ -778,7 +804,7 @@ public class Responds extends ListenerAdapter {
 					CoronaBot.w = CoronaBot.w + 1;
 					if (CoronaBot.w == 1 && repeatCatcher == false) {
 						StringBuilder sb = new StringBuilder();
-						for (int i = 0; i < rand.nextInt(8) + 3; i++)
+						for (int i = 0; i < rand.nextInt(12) + 3; i++)
 							sb.append("ח");
 						event.getChannel().sendTyping().queue();
 						event.getChannel().sendMessage(sb.toString()).queue();
@@ -833,5 +859,105 @@ public class Responds extends ListenerAdapter {
 			event.getChannel().sendMessage(throwMes).queue();
 			throw new Exception();
 		}
+
+	}
+
+	private void initGameSearch(String gameName) {
+		if (searchThreadsRunning >= 3) {
+			event.getChannel()
+					.sendMessage("Maximum gamesearching threads are currently running! (3), please try again later!")
+					.queue();
+			return;
+		}
+
+		new Thread(new Runnable() {
+			boolean gameFound = false;
+
+			@Override
+			public void run() {
+				do {
+					if (gameName != null && gameName.length() > 3) {
+						Document pirateSite;
+						User requester = event.getAuthor();
+						try {
+							searchThreadsRunning++;
+							// Recieve the game titles from the first 5 pages
+							pirateSite = Jsoup.connect("https://www.skidrowreloaded.com/").get();
+							Elements ets = pirateSite.getElementsByClass("post");
+							for (int i = 2; i < 6; i++)
+								ets.addAll(Jsoup.connect("https://www.skidrowreloaded.com/page/" + i + "/").get()
+										.getElementsByClass("post"));
+
+							// Seek the gametitle
+							for (Element e : ets) {
+								if (e.select("h2").select("a").text().toLowerCase().contains(gameName.toLowerCase())) {
+									requester.openPrivateChannel().complete()
+											.sendMessage((gameName.charAt(0) + "").toUpperCase() + gameName.substring(1)
+													+ " has been pirated!\nLINK: "
+													+ e.select("h2").select("a").attr("href"))
+											.queue();
+									gameFound = true;
+								}
+							}
+
+							// If not found, repeat every 20 minutes
+							if (!gameFound)
+								Thread.sleep(1200000);
+
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					} else
+						event.getChannel().sendMessage("Please enter a game name longer than 3 characters!").queue();
+
+				} while (!gameFound);
+				System.err.println("[GameSearch] Killing the search thread for " + gameName + "!");
+				searchThreadsRunning--;
+			}
+		}).start();
+	}
+
+	public String vizinerCyper(String word, String key) {
+		word = word.toUpperCase();
+		key = key.toUpperCase();
+		String cyper = "";
+		int len = key.length() - 1;
+		int index = 0;
+		for (char c : word.toCharArray()) {
+			char temp = (char) (c + key.charAt(index) - 'A');
+			while (temp > 'Z')
+				temp -= 26;
+			cyper += temp;
+
+			index++;
+			if (index > len)
+				index = 0;
+		}
+
+		return cyper;
+	}
+
+	public String vizinerDecyper(String word, String key) {
+		word = word.toUpperCase();
+		key = key.toUpperCase();
+		String cyper = "";
+		int len = key.length() - 1;
+		int index = 0;
+		for (char c : word.toCharArray()) {
+			char temp = (char) (c - (key.charAt(index) - 'A'));
+			while (temp < 'A')
+				temp += 26;
+			cyper += temp;
+
+			index++;
+			if (index > len)
+				index = 0;
+		}
+
+		return cyper;
 	}
 }

@@ -10,3 +10,22 @@ description: Battle Skirt, is a LEG with a Defense of 36
 price: 64
 def: 36
 type: LEG
+#
+name: Weak Rags
+description: Weak Rags, is a LEG with a Defense of 4
+price: 0
+def: 4
+type: LEG
+#
+name: Good Robe
+description: Good Robe, is a HEAD with a Defense of 7
+price: 3
+def: 7
+type: HEAD
+#
+name: Good Robe
+description: Good Robe, is a HEAD with a Defense of 7
+price: 3
+def: 7
+type: HEAD
+

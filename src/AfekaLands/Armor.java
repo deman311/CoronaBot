@@ -24,7 +24,7 @@ public class Armor extends Item {
 	
 	public Armor(aKind kind,int level) {
 		super(Sort.ARMOR,1);
-		if(level == 1)
+		if(level <= 1)
 			level = 2;
 		this.kind = kind;
 		super.name = createName(kind);

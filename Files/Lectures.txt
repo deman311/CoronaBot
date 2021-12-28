@@ -1,57 +1,34 @@
-08/07/2021
+27/12/2021
 Timor/Dima~
 SUNDAY
-° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/81963786038
-° סטטיסטיקה הרצאה: https://us02web.zoom.us/j/86954979149
-° סטטיסטיקה תרגול: https://us02web.zoom.us/j/84009690169
+° שיטות בהנדסת תוכנה: on Microsoft Teams
+° אבטחת מידע: https://us02web.zoom.us/j/89736108406?pwd=WWNwaGp4dno3N2cvYXJ2ZHo0cHJTUT09
 @
 MONDAY
-° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/85210706742
-° תקשורת מחשבים - מעבדה: https://afeka.zoom.us/j/96452994150?pwd=aEgrQ1k1TGI3NU5GTTlBVFlwTWovdz09
-@
-WEDNESDAY
-° תקשורת מחשבים: https://us02web.zoom.us/j/86834957831?pwd=OGE4cjIvZDZ1SzQ5MkF4Q3N5K2kwdz09
-° מערכות הפעלה: https://us02web.zoom.us/j/88080239626?pwd=TDBvS1dGS2pqMEdMMmtNZy8yNndKQT09
+° שיטות בהנדסת תוכנה: on Microsoft Teams
+° רשתות נוירונים ולמידה עמוקה: https://us02web.zoom.us/j/83651060525?pwd=elQya3FCZkxmM0R1Qk5BcnhEdDhvUT09
+° למידת מכונה - תרגול: https://us02web.zoom.us/j/88361842305?pwd=enRGMVJEYi9vbnhKMU9STkQrUm4zQT09
 @
 THURSDAY
-° הנדסת דרישות: https://us02web.zoom.us/j/81475762193?pwd=WS9veE83MFBzVEhBQXI1UDNBNXUyQT09
-° שפות תכנות: https://us02web.zoom.us/j/84448145088?pwd=Mnl3bmxCMkI3TDlHZGIrNXVaVVlmZz09
+° מערכות משובצות מחשב: https://us02web.zoom.us/j/89233593598?pwd=eHZiNDZQdGVTcGttVUhIS2ZXQVdmUT09
+° למידת מכונה: https://us02web.zoom.us/j/83493039694?pwd=ZUNRWVd1dTBrdkc4bFh3SGxoRktaUT09
 #
-Alon~
+Aviad~
 SUNDAY
-° תכנון וניתוח אלגוריתמים 10-12: https://us02web.zoom.us/j/81917812043
-° תכנון וניתוח אלגוריתמים 13-15: https://us02web.zoom.us/j/82441038548
+° שיטות בהנדסת תוכנה: https://teams.microsoft.com/l/meetup-join/19%3aa6WTwrJq50vDcdY_gKxpYg_kn8x-NpsiwEJ7NhbMpU01%40thread.tacv2/1633775481353?context=%7b%22Tid%22%3a%2279caa7d1-da42-47a2-b507-432ca23f0704%22%2c%22Oid%22%3a%222de24a28-b8de-47ef-819e-fb5e60296da8%22%7d
+° אבטחת מידע: https://us02web.zoom.us/j/89736108406?pwd=WWNwaGp4dno3N2cvYXJ2ZHo0cHJTUT09
+° אנגלית: https://us02web.zoom.us/j/87299119279?pwd=Z3d4djRRUlNMWmljN2YzaWxQU2xjUT09
 @
 MONDAY
-° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/82410320844
-° הנדסת דרישות: https://us02web.zoom.us/j/88556293757
-@
-TUESDAY
-° מבוא להסתברות 8-11:  https://us02web.zoom.us/j/83491186281?pwd=bHo0Rm9LTlRjZDN1b3daSE85NDdNZz09 סיסמא: 851256
-° מבוא להסתברות 14-15: https://us02web.zoom.us/j/82536416611
+° HCI 8-10: https://us02web.zoom.us/j/87880202971?pwd=QXNKQzl5SWY4MW5LM0VXRXdxQW1XUT09
+° HCI 10-11: https://us02web.zoom.us/j/87337559738?pwd=RGo5cEdveXIyNzJaS0xxdXJsZjRNQT09
+° שיטות בהנדסת תוכנה: https://teams.microsoft.com/l/meetup-join/19%3aa6WTwrJq50vDcdY_gKxpYg_kn8x-NpsiwEJ7NhbMpU01%40thread.tacv2/1633803521550?context=%7b%22Tid%22%3a%2279caa7d1-da42-47a2-b507-432ca23f0704%22%2c%22Oid%22%3a%222de24a28-b8de-47ef-819e-
 @
 WEDNESDAY
-° תקשורת מחשבים: https://us02web.zoom.us/j/88489959220?pwd=QWNvME9EQStoMDdiWTVlR0FHbSsxQT09
+° אלגוריתם מתקדם 10-13: https://afeka.zoom.us/j/91671799065?pwd=NWpKamFtNi9KS0pjS2ZHb3VhT2diUT09
+° אלגוריתם מתקדם 14-16: https://us02web.zoom.us/j/86370600968?pwd=dFk5YlB4eEhvZTNLWFNEM1JpNHpBUT09
 @
 THURSDAY
-° שפות תכנות: https://us02web.zoom.us/j/83428367214 סיסמא: 854086
-° מערכות הפעלה: https://us02web.zoom.us/j/88506618363?pwd=VlpkOTd5emxqSVlnR2FMSmxFa05wUT09
-#
-Elad~
-MONDAY
-° הנדסת דרישות: https://us02web.zoom.us/j/86767217355?pwd=V09vT0MwM2l6MWFvZmJRcnoyNnAyZz09
-° מערכות הפעלה: https://us02web.zoom.us/j/81136441445
-@
-TUESDAY
-° סטטיסטיקה 8-10: https://afeka.zoom.us/skype/9371035392
-° סטטיסטיקה 10-12: https://afeka.zoom.us/j/9371035392
-° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/81068488790
-° תקשורת מחשבים: https://us02web.zoom.us/j/88670840074?pwd=NHlWTzlxN0FFMkdHRzc3ai90Smd0dz09
-@
-WEDNESDAY
-° שפות תכנות: https://us02web.zoom.us/j/85393002238?pwd=M2xzNVExaTBLZFNJaDJYZUh1YzFKQT09
-° תכנון וניתוח אלגוריתמים: https://us02web.zoom.us/j/89064765624
-@
-THURSDAY
-° תקשורת מחשבים מעבדה: to be updated.
+° הבטחת איכות תוכנה: https://us02web.zoom.us/j/86200308881
+° מערכות משובצות מחשב: https://us02web.zoom.us/j/89233593598?pwd=eHZiNDZQdGVTcGttVUhIS2ZXQVdmUT09
 #

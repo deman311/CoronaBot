@@ -210,8 +210,7 @@ public interface AfekaLandsUI {
 			}
 			read.close();
 		} catch (FileNotFoundException e1) {
-			System.out.println("Character.txt not found!");
-			e1.printStackTrace();
+			// do nothing
 		}
 		Char = text.toString().split("\n");
 

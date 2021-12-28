@@ -72,20 +72,22 @@ public abstract class CoronaBot {
 		Poker.NewDeck();
 		Skill.readAll();
 		AfekaLandsController.checkPlayer();
-		AfekaLandsController.checkEnemy();
-		if (AfekaLandsController.hasPlayer())
+		if (AfekaLandsController.hasPlayer()) {
 			MapGen2.readMap();
+			AfekaLandsController.checkEnemy();
+		}
 		Leaderboards.checkWrite();
-		PirateBot.start();
+
+		// PirateBot.start();
 
 		// ---------------------------------------------------
 
 		getAllUsers();
 
 		// SEND DAILY LINKS
-//		if (!LocalDate.now().getDayOfWeek().name().contentEquals("FRIDAY")
-//				|| !LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
-//			sendDailyLinks();
+		if (!LocalDate.now().getDayOfWeek().name().contentEquals("FRIDAY")
+				|| !LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
+			sendDailyLinks(null);
 	}
 
 	public static void vrUpdates() {
@@ -125,13 +127,17 @@ public abstract class CoronaBot {
 			wc.waitForBackgroundJavaScript(5000);
 			HtmlPage page = null;
 
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < 5; j++) {
 				if (j == 0)
 					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10");
 				else if (j == 1)
 					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=100");
 				else if (j == 2)
 					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=200");
+				else if (j == 3)
+					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=300");
+				else if (j == 4)
+					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=400");
 
 				rows = page.getByXPath("//a[@class='topictitle']");
 				games = rows.iterator();
@@ -205,23 +211,25 @@ public abstract class CoronaBot {
 				cthyperLink.getRArray(0), paragraph);
 	}
 
-	public static void sendDailyLinks() {
+	public static void sendDailyLinks(String message) {
 		Lectures.readLastRead();
-		if (!Lectures.lastReadDate.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
+		if (!Lectures.lastReadDate.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))) || message !=null) {
 			for (Entry<String, User> userEntry : users.entrySet()) {
 				EmbedBuilder info = new EmbedBuilder();
 				String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
 				String body = Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name());
-				if (body == null || body.isEmpty())
-					break;
-				day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
-				info.setTitle(day + " Links 🖥");
-				info.setColor(Color.blue);
-				info.setDescription("Good morning " + userEntry.getKey() + " ♥😁" + "\nHere are your daily links:\n\n");
-				info.appendDescription(body);
-				info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
-				users.get(userEntry.getKey()).openPrivateChannel().complete().sendMessage(info.build()).queue();
-
+				if (body != null) {
+					day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
+					info.setTitle(day + " Links 🖥");
+					info.setColor(Color.blue);
+					info.setDescription(
+							"Good morning " + userEntry.getKey() + " ♥😁" + "\nHere are your daily links:\n\n");
+					info.appendDescription(body);
+					if(message!=null)
+						info.appendDescription("\n\n" + message);
+					info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
+					users.get(userEntry.getKey()).openPrivateChannel().complete().sendMessage(info.build()).queue();
+				}
 			}
 			Lectures.writeLastRead();
 		}
@@ -233,7 +241,7 @@ public abstract class CoronaBot {
 		users.put("Timor", jda.retrieveUserById("687978431299715148").complete());
 		users.put("Alon", jda.retrieveUserById("687980623419408445").complete());
 		users.put("Elad", jda.retrieveUserById("688825751818207362").complete());
-		// users.put("Matan", jda.retrieveUserById("381344453966954517").complete());
+		users.put("Aviad", jda.retrieveUserById("630401450002087937").complete());
 		return users;
 	}
 }
