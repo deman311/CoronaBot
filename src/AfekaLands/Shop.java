@@ -68,7 +68,7 @@ public class Shop {
 		Scanner readfile;
 		ArrayList<String> names = new ArrayList<String>();
 		try {
-			readfile = new Scanner(new File("./Files/AfekaLands/Shop/oNames.txt"));
+			readfile = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Shop/oNames.txt"));
 			while (readfile.hasNext())
 				names.add(readfile.nextLine());
 		} catch (FileNotFoundException e) {
@@ -82,7 +82,7 @@ public class Shop {
 		Scanner readfile;
 		ArrayList<String> names = new ArrayList<String>();
 		try {
-			readfile = new Scanner(new File("./Files/AfekaLands/Shop/sNames.txt"));
+			readfile = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Shop/sNames.txt"));
 			while (readfile.hasNext())
 				names.add(readfile.nextLine());
 		} catch (FileNotFoundException e) {
@@ -96,7 +96,7 @@ public class Shop {
 		Scanner readfile;
 		ArrayList<String> names = new ArrayList<String>();
 		try {
-			readfile = new Scanner(new File("./Files/AfekaLands/Shop/sTitle.txt"));
+			readfile = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Shop/sTitle.txt"));
 			while (readfile.hasNext())
 				names.add(readfile.nextLine());
 		} catch (FileNotFoundException e) {

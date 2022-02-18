@@ -13,7 +13,7 @@ public class Skill {
 	public static void readAll() {
 		Scanner read;
 		try {
-			read = new Scanner(new File("./Files/AfekaLands/Skills.txt"));
+			read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Skills.txt"));
 			StringBuilder sb = new StringBuilder();
 			String[] sepSkills;
 			String[] oneSkill;

@@ -17,6 +17,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class AfekaLandsController extends ListenerAdapter {
 
+	public static String FS_PATH;
 	public static Random rand = new Random();
 
 	public static Character player1;

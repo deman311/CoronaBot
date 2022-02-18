@@ -65,10 +65,10 @@ abstract class GetText {
 		String fileName=null;
 		switch(desired) {
 		case "BokerTov":
-			fileName = "./Files/BokerTov.txt";
+			fileName = CoronaBot.FS_PATH + "/BokerTov.txt";
 			break;
 		case "ResToCall":
-			fileName = "./Files/ResToCall.txt";
+			fileName = CoronaBot.FS_PATH + "/ResToCall.txt";
 			break;
 		}
 		

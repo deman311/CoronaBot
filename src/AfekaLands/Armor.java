@@ -56,12 +56,12 @@ public class Armor extends Item {
 		StringBuilder sb = new StringBuilder();
 		Scanner read;
 		try {
-			read = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+			read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 			while(read.hasNext())
 				sb.append(read.nextLine() + "\n");
 			read.close();
 			
-			PrintWriter write = new PrintWriter("./Files/AfekaLands/Items/cArmor.txt");
+			PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt");
 			if(sb.toString().contains(armor.fileFormat())); {
 				write.println(sb.toString().replace(armor.fileFormat(), ""));
 				write.flush();
@@ -83,13 +83,13 @@ public class Armor extends Item {
 		StringBuilder sb = new StringBuilder();
 		Scanner read;
 		try {
-			read = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+			read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 			while(read.hasNext())
 				sb.append(read.nextLine() + "\n");
 			if(!sb.toString().isEmpty())
 				sb.deleteCharAt(sb.length()-1);
 			read.close();
-			PrintWriter write = new PrintWriter("./Files/AfekaLands/Items/cArmor.txt");
+			PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt");
 			if(sb.toString().contains(OLD.fileFormat())); {
 				write.println(sb.toString().replace(OLD.fileFormat(), NEW.fileFormat()));
 				write.flush();
@@ -108,7 +108,7 @@ public class Armor extends Item {
 		StringBuilder sb = new StringBuilder();
 		String[] sepArmor,sepText;
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 			while(read.hasNext())
 				sb.append(read.nextLine() + "\n");
 			if(!sb.toString().isEmpty())
@@ -148,7 +148,7 @@ public class Armor extends Item {
 	public boolean checkNameExist(String name) {
 		StringBuilder sb = new StringBuilder();
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 			while(read.hasNext())
 				sb.append(read.nextLine() + "\n");
 			if(!sb.toString().isEmpty())
@@ -167,14 +167,14 @@ public class Armor extends Item {
 	public void writeArmor() {
 		StringBuilder sb = new StringBuilder();
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 			while(read.hasNext())
 				sb.append(read.nextLine() + "\n");
 			if(!sb.toString().isEmpty())
 				sb.deleteCharAt(sb.length()-1);
 			read.close();
 			if(!sb.toString().contains(this.fileFormat())) {
-				PrintWriter write = new PrintWriter("./Files/AfekaLands/Items/cArmor.txt");
+				PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt");
 				write.println(sb.toString() + fileFormat());
 				write.flush();
 				write.close();
@@ -203,7 +203,7 @@ public class Armor extends Item {
 //		int counter=0;
 //		String line;
 //		try {
-//			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+//			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 //			while(read.hasNext()) {
 //				line = read.nextLine();
 //				if(line.contains("id: "))
@@ -229,8 +229,8 @@ public class Armor extends Item {
 		ArrayList<String> BOOT = new ArrayList<String>();
 		ArrayList<String> RING = new ArrayList<String>();
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/aNames.txt"));
-			Scanner read2 = new Scanner(new File("./Files/AfekaLands/Items/cArmor.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/aNames.txt"));
+			Scanner read2 = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt"));
 			while(read.hasNext())
 				sb.append(read.nextLine() + "\n");
 			if(!sb.toString().isEmpty())

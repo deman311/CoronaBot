@@ -49,7 +49,7 @@ public abstract class MapGen {
 			map[i][worldWidth-1]=map[i][worldWidth-1].substring(0, 1);
 		}
 		try {
-			File file = new File("./Files/AfekaLands/Map.txt");
+			File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Map.txt");
 			PrintWriter write = new PrintWriter(file);
 			for (String[] row : map) {
 				for (String index : row) {
@@ -69,8 +69,8 @@ public abstract class MapGen {
 	}
 
 	public static String[] readMapFile(int type) {
-		File mapFile = new File("./Files/AfekaLands/Map.txt");
-		File Detailsfile = new File("./Files/AfekaLands/GameDetails.txt");
+		File mapFile = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Map.txt");
+		File Detailsfile = new File(AfekaLandsController.FS_PATH + "/AfekaLands/GameDetails.txt");
 		Scanner readMap, readDetails;
 		String[] textRow;
 		String line;
@@ -140,8 +140,8 @@ public abstract class MapGen {
 		boolean notMoved = true;
 		PrintWriter write,writeDetails;
 		try {
-			write = new PrintWriter("./Files/AfekaLands/Map.txt");
-			writeDetails = new PrintWriter("./Files/AfekaLands/GameDetails.txt");
+			write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Map.txt");
+			writeDetails = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/GameDetails.txt");
 
 			for (int i = 0; i < map.length; i++)
 				for (int j = 0; j < map[0].length; j++) {

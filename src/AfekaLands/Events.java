@@ -10,7 +10,7 @@ import java.util.Scanner;
 public abstract class Events {
 
 	public static String giveAnswer(char answer) {
-		File file = new File("./Files/AfekaLands/CurrentEvent.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/CurrentEvent.txt");
 		StringBuilder text = new StringBuilder();
 		String[] eventLines, answers = new String[0], replys = new String[0], status;
 		Scanner readFile;
@@ -54,8 +54,8 @@ public abstract class Events {
 	}
 
 	public static String getEvent() {
-		File eventsFile = new File("./Files/AfekaLands/Events.txt");
-		File currentFile = new File("./Files/AfekaLands/CurrentEvent.txt");
+		File eventsFile = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Events.txt");
+		File currentFile = new File(AfekaLandsController.FS_PATH + "/AfekaLands/CurrentEvent.txt");
 		StringBuilder textPure = new StringBuilder();
 		StringBuilder text = new StringBuilder();
 		String[] events;
@@ -65,7 +65,7 @@ public abstract class Events {
 		try {
 			readEvents = new Scanner(eventsFile);
 			readCurrent = new Scanner(currentFile);
-			PrintWriter write = new PrintWriter("./Files/AfekaLands/CurrentEvent.txt");
+			PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/CurrentEvent.txt");
 			while (readEvents.hasNext()) {
 				line = readEvents.nextLine();
 				textPure.append(line + "\n");

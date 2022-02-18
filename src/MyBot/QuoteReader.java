@@ -14,7 +14,7 @@ abstract class QuoteReader {
 	public static String fileread(String name) {
 		String context = null;
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./Files/"+ getName(name) +"Quotes.txt"), "UTF8"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(CoronaBot.FS_PATH + "/"+ getName(name) +"Quotes.txt"), "UTF8"));
             String line = null;
             
             while ((line = reader.readLine()) != null) {
@@ -35,7 +35,7 @@ abstract class QuoteReader {
 	public static void filewrite(String name,String line) {
 		String emoji=null;
 		try {
-			File file = new File("./Files/"+name+"Quotes.txt");
+			File file = new File(CoronaBot.FS_PATH + "/"+name+"Quotes.txt");
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true),"UTF-8"));
 			writer.newLine();
 			

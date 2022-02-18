@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 abstract class Lectures {
-	static File file = new File("./Files/Lectures.txt");
+	static File file = new File(CoronaBot.FS_PATH + "/Lectures.txt");
 	static String lastReadDate;
 
 	public static String getText(String name, String day) {

@@ -162,7 +162,7 @@ public abstract class MapGen2 implements Runnable {
 
 	public static void writeMap(String rawMAP) {
 		try {
-			FileWriter map = new FileWriter("./Files/AfekaLands/Map2.txt");
+			FileWriter map = new FileWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Map2.txt");
 			PrintWriter writeMap = new PrintWriter(map);
 
 			String[] rows = rawMAP.split("\n");
@@ -181,7 +181,7 @@ public abstract class MapGen2 implements Runnable {
 
 	public static void writePOS() {
 		try {
-			FileWriter details = new FileWriter("./Files/AfekaLands/Map2Details.txt");
+			FileWriter details = new FileWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Map2Details.txt");
 			PrintWriter writeDetails = new PrintWriter(details);
 
 			writeDetails.append("Map Size: " + mapRAW[0].length + " " + mapRAW[0][0].length);
@@ -205,8 +205,8 @@ public abstract class MapGen2 implements Runnable {
 
 	public static void readMap() {
 		try {
-			Scanner mapReader = new Scanner(new File("./Files/AfekaLands/Map2.txt"));
-			Scanner detailsReader = new Scanner(new File("./Files/AfekaLands/Map2Details.txt"));
+			Scanner mapReader = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Map2.txt"));
+			Scanner detailsReader = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Map2Details.txt"));
 			String[] mapSize = detailsReader.nextLine().replace("Map Size: ", "").split(" ");
 			String[] playerPos = detailsReader.nextLine().replace("Player Pos: ", "").split(" ");
 

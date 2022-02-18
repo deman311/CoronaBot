@@ -193,7 +193,7 @@ public interface AfekaLandsUI {
 	}
 
 	public static String[] getStatus() {
-		File file = new File("./Files/AfekaLands/Character.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Character.txt");
 		String[] Char = null;
 		String line = null;
 		StringBuilder text = new StringBuilder();
@@ -229,7 +229,7 @@ public interface AfekaLandsUI {
 	}
 
 	public static String buryChar() {
-		File file = new File("./Files/AfekaLands/Character.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Character.txt");
 		String line = null;
 		StringBuilder oldtext = new StringBuilder();
 		String[] Char = null;
@@ -261,7 +261,7 @@ public interface AfekaLandsUI {
 		try {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
 			PrintWriter deleteWepArchinve = new PrintWriter(
-					new FileOutputStream("./Files/AfekaLands/cWeapons.txt", false));
+					new FileOutputStream(AfekaLandsController.FS_PATH + "/AfekaLands/cWeapons.txt", false));
 			deleteWepArchinve.flush();
 			deleteWepArchinve.close();
 			writer.flush();

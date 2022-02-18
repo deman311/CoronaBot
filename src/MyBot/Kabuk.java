@@ -10,7 +10,7 @@ import java.util.Random;
 abstract class Kabuk {
 	
 	public static String getWord() {
-		File file = new File("./Files/Kabuk.txt");
+		File file = new File(CoronaBot.FS_PATH + "/Kabuk.txt");
 		String word=null;
 		String[] text = null;
 		StringBuilder sb = new StringBuilder();

@@ -53,8 +53,8 @@ public class Weapon extends Item {
 		Scanner readTitle;
 		String finalName = null;
 		try {
-			readName = new Scanner(new File("./Files/Afekalands/Items/wNames.txt"));
-			readTitle = new Scanner(new File("./Files/Afekalands/Items/wTitle.txt"));
+			readName = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/wNames.txt"));
+			readTitle = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/wTitle.txt"));
 			StringBuilder sbn = new StringBuilder();
 			StringBuilder sbt = new StringBuilder();
 			while (readName.hasNext())
@@ -94,7 +94,7 @@ public class Weapon extends Item {
 
 	public static boolean rewriteWeapon(Weapon OLD, Weapon NEW) {
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cWeapons.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cWeapons.txt"));
 			StringBuilder sb = new StringBuilder();
 
 			while (read.hasNext())
@@ -103,7 +103,7 @@ public class Weapon extends Item {
 			read.close();
 
 			if (sb.toString().contains(OLD.fileFormat())) {
-				PrintWriter write = new PrintWriter("./Files/AfekaLands/Items/cWeapons.txt");
+				PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cWeapons.txt");
 				write.println(sb.toString().replace(OLD.fileFormat(), NEW.fileFormat()));
 
 				write.flush();
@@ -121,7 +121,7 @@ public class Weapon extends Item {
 	public static Weapon findByName(String name) {
 		Weapon wep = null;
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cWeapons.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cWeapons.txt"));
 			StringBuilder sb = new StringBuilder();
 			String[] allWeapons;
 			String[] weaponText = null;
@@ -180,12 +180,12 @@ public class Weapon extends Item {
 		StringBuilder sb = new StringBuilder();
 		String op = null;
 		try {
-			Scanner read = new Scanner(new File("./Files/AfekaLands/Items/cWeapons.txt"));
+			Scanner read = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cWeapons.txt"));
 
 			while (read.hasNext())
 				sb.append(read.nextLine() + "\n");
 
-			PrintWriter write = new PrintWriter("./Files/AfekaLands/Items/cWeapons.txt");
+			PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cWeapons.txt");
 
 			if (sb.toString().contains(weapon.fileFormat()))
 				op = sb.toString().replace(weapon.fileFormat(), "");

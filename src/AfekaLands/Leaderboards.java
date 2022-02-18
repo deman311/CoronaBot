@@ -13,7 +13,7 @@ public abstract class Leaderboards {
 		Scanner readLB;
 		StringBuilder sb = new StringBuilder();
 		try {
-			readLB = new Scanner(new File("./Files/AfekaLands/Leaderboards.txt"));
+			readLB = new Scanner(new File(AfekaLandsController.FS_PATH + "/AfekaLands/Leaderboards.txt"));
 			String[] lbs, level;
 
 			while (readLB.hasNext())
@@ -52,7 +52,7 @@ public abstract class Leaderboards {
 				}
 			}
 
-			PrintWriter write = new PrintWriter(new FileWriter("./Files/AfekaLands/Leaderboards.txt"));
+			PrintWriter write = new PrintWriter(new FileWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Leaderboards.txt"));
 			sb.delete(0, sb.length());
 
 			int counter = 0;

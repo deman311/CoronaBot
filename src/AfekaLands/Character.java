@@ -277,7 +277,7 @@ public class Character {
 	}
 
 	public void updateStatus(String status, int update) throws FileNotFoundException {
-		File file = new File("./Files/AfekaLands/Character.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Character.txt");
 		PrintWriter writeChar = new PrintWriter(file);
 		if (status.contains("HP"))
 			setHP(update);
@@ -317,7 +317,7 @@ public class Character {
 	}
 
 	public void updateStatus() {
-		File file = new File("./Files/AfekaLands/Character.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Character.txt");
 		PrintWriter writeChar;
 		try {
 			writeChar = new PrintWriter(file);
@@ -459,7 +459,7 @@ public class Character {
 	@SuppressWarnings("resource")
 	public void putIn(Weapon item) {
 		inv.add(item);
-		File file = new File("./Files/AfekaLands/Items/cWeapons.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cWeapons.txt");
 		StringBuilder sb = new StringBuilder();
 		try {
 			PrintWriter write = new PrintWriter(new FileOutputStream(file, true));
@@ -487,7 +487,7 @@ public class Character {
 	@SuppressWarnings("resource")
 	public void putIn(Armor item) {
 		inv.add(item);
-		File file = new File("./Files/AfekaLands/Items/cArmor.txt");
+		File file = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Items/cArmor.txt");
 		StringBuilder sb = new StringBuilder();
 		try {
 			PrintWriter write = new PrintWriter(new FileOutputStream(file, true));

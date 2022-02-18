@@ -19,8 +19,8 @@ public class Enemy {
 	private ArrayList<Item> loot = new ArrayList<Item>();
 
 	public static Random rand = new Random();
-	public File namesFile = new File("./Files/AfekaLands/Enemy/eNames.txt");
-	public File titleFile = new File("./Files/AfekaLands/Enemy/eTitle.txt");
+	public File namesFile = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Enemy/eNames.txt");
+	public File titleFile = new File(AfekaLandsController.FS_PATH + "/AfekaLands/Enemy/eTitle.txt");
 
 	public Enemy() {
 		name = newName();
@@ -178,7 +178,7 @@ public class Enemy {
 
 	public void writeEnemy() {
 		try {
-			PrintWriter write = new PrintWriter("./Files/AfekaLands/Enemy/Enemy.txt");
+			PrintWriter write = new PrintWriter(AfekaLandsController.FS_PATH + "/AfekaLands/Enemy/Enemy.txt");
 			write.append(name + "\n");
 			write.append(String.valueOf(hp) + "\n");
 			write.append(String.valueOf(def) + "\n");

@@ -142,9 +142,6 @@ public class Responds extends ListenerAdapter {
 			if (messageRaw.contains("!piratealert: "))
 				initGameSearch(messageRaw.replace("!piratealert: ", ""));
 
-			if (messageRaw.contains("!senddailylinks: "))
-				CoronaBot.sendDailyLinks(messageRaw.replace("!senddailylinks: ", ""));
-			
 			if (messageRaw.contains("!say ")) {
 				event.getChannel().deleteMessageById(messageID).queue();
 				event.getChannel().sendMessage(messageRaw.replace("!say ", "")).queue();
@@ -340,7 +337,7 @@ public class Responds extends ListenerAdapter {
 		if (messageRaw.equalsIgnoreCase("!clearcars")) {
 			FileWriter fw;
 			try {
-				fw = new FileWriter(new File("./Files/carBanList.txt"));
+				fw = new FileWriter(new File(CoronaBot.FS_PATH + "/carBanList.txt"));
 				fw.write("");
 				fw.close();
 				event.getChannel().sendTyping().queue();
@@ -366,7 +363,7 @@ public class Responds extends ListenerAdapter {
 					sCar = doc.getElementsByClass("lazy thumbnail aspect-wide-contain").first();
 
 					// Create a ban list
-					Scanner banList = new Scanner(new File("./Files/carBanList.txt"));
+					Scanner banList = new Scanner(new File(CoronaBot.FS_PATH + "/carBanList.txt"));
 					while (banList.hasNextLine())
 						if (banList.nextLine().contains(sCar.absUrl("data-src")))
 							isBanned = true;
@@ -379,7 +376,7 @@ public class Responds extends ListenerAdapter {
 				} while (isBanned);
 				String link = sCar.absUrl("data-src");
 				InputStream linkConnection = new URL(link).openConnection().getInputStream();
-				FileWriter fw = new FileWriter(new File("./Files/carBanList.txt"), true);
+				FileWriter fw = new FileWriter(new File(CoronaBot.FS_PATH + "/carBanList.txt"), true);
 				fw.write(sCar.absUrl("data-src") + "\n");
 				fw.close();
 				byte[] b = new byte[2048];

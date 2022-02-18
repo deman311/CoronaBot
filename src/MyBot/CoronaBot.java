@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.poi.wp.usermodel.HeaderFooterType;
 import org.apache.poi.xwpf.usermodel.UnderlinePatterns;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -50,6 +52,8 @@ public abstract class CoronaBot {
 	public static String prefix = "!";
 	private static Map<String, User> users = new HashMap<String, User>();
 
+	public static String FS_PATH;
+
 	public static int w = 0;
 	public static int BC = 0;
 	public static String zombies = null;
@@ -69,6 +73,10 @@ public abstract class CoronaBot {
 		// AFEKA LANDS RELATED -------------------------------
 
 		jda.addEventListener(new AfekaLandsController());
+		FS_PATH = SystemUtils.IS_OS_LINUX ? "/home/ITmania/git/CoronaBot/Files" : "./Files"; // decide on OS for
+																								// different file
+																								// systems.
+		AfekaLandsController.FS_PATH = FS_PATH;
 		Poker.NewDeck();
 		Skill.readAll();
 		AfekaLandsController.checkPlayer();
@@ -83,16 +91,12 @@ public abstract class CoronaBot {
 		// ---------------------------------------------------
 
 		getAllUsers();
-
-		// SEND DAILY LINKS
-		if (!LocalDate.now().getDayOfWeek().name().contentEquals("FRIDAY")
-				|| !LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
-			sendDailyLinks(null);
+		sendDailyLinks();
 	}
 
 	public static void vrUpdates() {
 		try {
-			Scanner read = new Scanner(new File("./Files/VRTitles.txt"));
+			Scanner read = new Scanner(new File(FS_PATH + "/VRTitles.txt"));
 			ArrayList<String> lastTitles = new ArrayList<String>();
 			StringBuilder sb = new StringBuilder();
 			while (read.hasNext()) {
@@ -102,9 +106,9 @@ public abstract class CoronaBot {
 				lastTitles.add(sb.toString());
 				sb = new StringBuilder();
 			}
-			FileWriter write = new FileWriter(new File("./Files/VRTitles.txt"));
+			FileWriter write = new FileWriter(new File(FS_PATH + "/VRTitles.txt"));
 			XWPFDocument wordFile = new XWPFDocument();
-			FileOutputStream out = new FileOutputStream(new File("C://Users/Dmitry Gribovsky/Desktop/VRUpdates.docx"));
+			FileOutputStream out = new FileOutputStream(new File(FS_PATH + "/VRUpdates.docx"));
 			List<DomElement> rows = null;
 			Iterator<DomElement> games = null;
 
@@ -211,28 +215,46 @@ public abstract class CoronaBot {
 				cthyperLink.getRArray(0), paragraph);
 	}
 
-	public static void sendDailyLinks(String message) {
-		Lectures.readLastRead();
-		if (!Lectures.lastReadDate.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))) || message !=null) {
-			for (Entry<String, User> userEntry : users.entrySet()) {
-				EmbedBuilder info = new EmbedBuilder();
-				String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
-				String body = Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name());
-				if (body != null) {
-					day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
-					info.setTitle(day + " Links 🖥");
-					info.setColor(Color.blue);
-					info.setDescription(
-							"Good morning " + userEntry.getKey() + " ♥😁" + "\nHere are your daily links:\n\n");
-					info.appendDescription(body);
-					if(message!=null)
-						info.appendDescription("\n\n" + message);
-					info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
-					users.get(userEntry.getKey()).openPrivateChannel().complete().sendMessage(info.build()).queue();
+	public static void sendDailyLinks() {
+		new Thread(() -> {
+			while (true) {
+				int currentHour = LocalTime.now().getHour();
+				System.out.println("CURRENT HOUR: " + currentHour);
+				if (currentHour >= 7 && currentHour <= 8) {
+					if (!LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY")) {
+						Lectures.readLastRead();
+						if (!Lectures.lastReadDate
+								.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
+							for (Entry<String, User> userEntry : users.entrySet()) {
+								EmbedBuilder info = new EmbedBuilder();
+								String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
+								String body = Lectures.getText(userEntry.getKey(),
+										LocalDate.now().getDayOfWeek().name());
+
+								if (body != null) {
+									day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
+									info.setTitle(day + " Links 🖥");
+									info.setColor(Color.blue);
+									info.setDescription("Good morning " + userEntry.getKey() + " ♥😁"
+											+ "\nHere are your daily links:\n\n");
+									info.appendDescription(body);
+									info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
+									users.get(userEntry.getKey()).openPrivateChannel().complete()
+											.sendMessage(info.build()).queue();
+								}
+							}
+							Lectures.writeLastRead();
+						}
+					}
+				}
+				try {
+					Thread.sleep(60000 * 60); // wait an hour before next check
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					break;
 				}
 			}
-			Lectures.writeLastRead();
-		}
+		}).start();
 	}
 
 	public static Map<String, User> getAllUsers() {
