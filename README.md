@@ -72,6 +72,7 @@ This car title is saved in the answer variable that can be later pulled by typin
 ![carquiz](/assets/carpic.png "Car Quiz")
 
 ### Poker
-One of my very first projects for the bot, The class generates a virtual deck which you can pull cards from (Removed from the array, non-repeating) and then, presumably after everybody have pulled a 'hand', you can pull the pull the table cards (5 cards) and check who won't. This feature passed quite a lot of time when dealing with a speacially boring section in a lecture.
+One of my very first projects for the bot, The class generates a virtual deck which you can pull cards from (Removed from the array, non-repeating) and then, presumably after everybody have pulled a 'hand', you can pull the table cards (5 cards) and check who've won. This feature passed quite a lot of time when dealing with a speacially boring section in a lecture.
+[ ] I've had a plan to write a game mechanic that actually controls the game flow and know's the rules and can tell who is the winner. TODO
 
 ![poker](/assets/pokerpic.png "Playing Poker")
