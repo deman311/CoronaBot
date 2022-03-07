@@ -1,34 +1,41 @@
-18/02/2022
+07/03/2022
 Timor/Dima~
 SUNDAY
-° שיטות בהנדסת תוכנה: on Microsoft Teams
-° אבטחת מידע: https://us02web.zoom.us/j/89736108406?pwd=WWNwaGp4dno3N2cvYXJ2ZHo0cHJTUT09
+° הנדסת תוכנה אינטגרטיבית: https://us02web.zoom.us/j/84924318312 סיסמא: 130919
+° מבוא לראייה ממוחשבת: https://us02web.zoom.us/j/82998722220?pwd=aEZzZTZLT0Q5UkJxdVZNNlcrNVFtZz09
 @
-MONDAY
-° שיטות בהנדסת תוכנה: on Microsoft Teams
-° רשתות נוירונים ולמידה עמוקה: https://us02web.zoom.us/j/83651060525?pwd=elQya3FCZkxmM0R1Qk5BcnhEdDhvUT09
-° למידת מכונה - תרגול: https://us02web.zoom.us/j/88361842305?pwd=enRGMVJEYi9vbnhKMU9STkQrUm4zQT09
+WEDNESDAY
+° הבטחת איכות תוכנה - הרצאה: https://us02web.zoom.us/j/88919548293
+° הבטחת איכות תוכנה - תרגול: https://us02web.zoom.us/j/87508592789
+° ממשקי אדם מחשב HCI: https://us02web.zoom.us/j/85017783810
 @
 THURSDAY
-° מערכות משובצות מחשב: https://us02web.zoom.us/j/89233593598?pwd=eHZiNDZQdGVTcGttVUhIS2ZXQVdmUT09
-° למידת מכונה: https://us02web.zoom.us/j/83493039694?pwd=ZUNRWVd1dTBrdkc4bFh3SGxoRktaUT09
+° מחשוב מקבילי ומבוזר - הרצאה: https://us02web.zoom.us/j/84786797915?pwd=VCtMOHEvK3J2V3dVMVZ1dDdRVWdYZz09 סיסמא: 217063
+° מחשוב מקבילי ומבוזר - תרגול: https://us02web.zoom.us/j/86100583082
 #
 Aviad~
 SUNDAY
-° שיטות בהנדסת תוכנה: https://teams.microsoft.com/l/meetup-join/19%3aa6WTwrJq50vDcdY_gKxpYg_kn8x-NpsiwEJ7NhbMpU01%40thread.tacv2/1633775481353?context=%7b%22Tid%22%3a%2279caa7d1-da42-47a2-b507-432ca23f0704%22%2c%22Oid%22%3a%222de24a28-b8de-47ef-819e-fb5e60296da8%22%7d
-° אבטחת מידע: https://us02web.zoom.us/j/89736108406?pwd=WWNwaGp4dno3N2cvYXJ2ZHo0cHJTUT09
-° אנגלית: https://us02web.zoom.us/j/87299119279?pwd=Z3d4djRRUlNMWmljN2YzaWxQU2xjUT09
+° לימוד מכונה: https://us02web.zoom.us/j/89840371527
+° מבוא לראייה ממוחשבת: https://us02web.zoom.us/j/82998722220?pwd=aEZzZTZLT0Q5UkJxdVZNNlcrNVFtZz09
 @
 MONDAY
-° HCI 8-10: https://us02web.zoom.us/j/87880202971?pwd=QXNKQzl5SWY4MW5LM0VXRXdxQW1XUT09
-° HCI 10-11: https://us02web.zoom.us/j/87337559738?pwd=RGo5cEdveXIyNzJaS0xxdXJsZjRNQT09
-° שיטות בהנדסת תוכנה: https://teams.microsoft.com/l/meetup-join/19%3aa6WTwrJq50vDcdY_gKxpYg_kn8x-NpsiwEJ7NhbMpU01%40thread.tacv2/1633803521550?context=%7b%22Tid%22%3a%2279caa7d1-da42-47a2-b507-432ca23f0704%22%2c%22Oid%22%3a%222de24a28-b8de-47ef-819e-
+° לימוד מכונה: https://us02web.zoom.us/skype/83898609965
 @
-WEDNESDAY
-° אלגוריתם מתקדם 10-13: https://afeka.zoom.us/j/91671799065?pwd=NWpKamFtNi9KS0pjS2ZHb3VhT2diUT09
-° אלגוריתם מתקדם 14-16: https://us02web.zoom.us/j/86370600968?pwd=dFk5YlB4eEhvZTNLWFNEM1JpNHpBUT09
+TUESDAY
+° קומפילציה: https://us02web.zoom.us/j/87190678213?pwd=UXJ0cVg1aHVxajc1OHI5M1VWSk9pQT09
+° פיתוח משחקים: https://us02web.zoom.us/j/86191392893?pwd=dWVzU2ZtclFpWDFDeHFrK1hSZURSZz09
 @
 THURSDAY
-° הבטחת איכות תוכנה: https://us02web.zoom.us/j/86200308881
-° מערכות משובצות מחשב: https://us02web.zoom.us/j/89233593598?pwd=eHZiNDZQdGVTcGttVUhIS2ZXQVdmUT09
+° מחשוב מקבילי ומבוזר - הרצאה: https://us02web.zoom.us/j/84786797915?pwd=VCtMOHEvK3J2V3dVMVZ1dDdRVWdYZz09 סיסמא: 217063
+° מחשוב מקבילי ומבוזר - תרגול: https://us02web.zoom.us/j/89027617367
+° ליווי פרויקט גמר חלק א': https://us02web.zoom.us/j/81543189604
+#
+Alon~
+SUNDAY
+° הנדסת תוכנה אינטגרטיבית: https://us02web.zoom.us/j/84924318312
+@
+WEDNESDAY
+° הבטחת איכות תוכנה - הרצאה: https://us02web.zoom.us/j/88919548293
+° הבטחת איכות תוכנה - תרגול: https://us02web.zoom.us/j/87508592789
+° ממשקי אדם מחשב HCI: https://us02web.zoom.us/j/85017783810
 #
