@@ -107,7 +107,7 @@ public class Responds extends ListenerAdapter {
 
 			if (messageRaw.contains("!seekVR")) {
 				event.getMessage().delete().queue();
-				event.getAuthor().openPrivateChannel().complete().sendMessage("Working on it, we'll send when done...")
+				event.getAuthor().openPrivateChannel().complete().sendMessage("Working on it, will send when done...")
 						.queue();
 				event.getChannel().sendTyping().queue();
 				CoronaBot.vrUpdates(event.getAuthor());
@@ -307,7 +307,7 @@ public class Responds extends ListenerAdapter {
 		if (messageRaw.equalsIgnoreCase("!carAnswer") && carAnswer != null) {
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage(carAnswer).queue();
-			event.getChannel().sendFile(new File("./CarGame/car." + carFormat)).queue();
+			event.getChannel().sendFile(new File(CoronaBot.FS_PATH + "/CarGame/car." + carFormat)).queue();
 		}
 
 		if (messageRaw.equalsIgnoreCase("!clearcars")) {
@@ -335,7 +335,7 @@ public class Responds extends ListenerAdapter {
 					isBanned = false;
 					counter++;
 					doc = Jsoup.connect("https://www.generatormix.com/random-car-model-generator").get();
-					os = new FileOutputStream("./CarGame/car.jpg");
+					os = new FileOutputStream(CoronaBot.FS_PATH + "/CarGame/car.jpg");
 					sCar = doc.getElementsByClass("lazy thumbnail aspect-wide-contain").first();
 
 					// Create a ban list
@@ -362,14 +362,14 @@ public class Responds extends ListenerAdapter {
 
 				os.close();
 
-				BufferedImage carImg = ImageIO.read(new FileInputStream("./CarGame/car.jpg"));
+				BufferedImage carImg = ImageIO.read(new FileInputStream(CoronaBot.FS_PATH + "/CarGame/car.jpg"));
 				BufferedImage carCropped = carImg.getSubimage((int) carImg.getWidth() / 3, 0,
 						(int) carImg.getWidth() - (int) carImg.getWidth() / 3,
 						(int) carImg.getHeight() - (int) carImg.getHeight() / 3);
-				FileOutputStream co = new FileOutputStream("./CarGame/carCropped.jpg");
+				FileOutputStream co = new FileOutputStream(CoronaBot.FS_PATH + "/CarGame/carCropped.jpg");
 				ImageIO.write(carCropped, "jpg", co);
 
-				event.getChannel().sendFile(new File("./CarGame/carCropped.jpg")).queue();
+				event.getChannel().sendFile(new File(CoronaBot.FS_PATH + "/CarGame/carCropped.jpg")).queue();
 
 				carAnswer = Jsoup.connect("https://yandex.com/images/search?rpt=imageview&url=" + link).get()
 						.getElementsByClass("CbirObjectResponse-Title").text();
