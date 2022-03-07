@@ -87,7 +87,7 @@ This specific feature runs on a thread. This thread is updated on the current ti
 ![links](/assets/linkspic.png "The message format you receive")
 
 ### VR Updates 🕶️
-As a casual VR player and a pirate at that 🏴‍☠️, I constantly check forums (e.a https://cs.rin.ru) for new releases of VR games. Therefore, I've created an automated process which scans the first X pages of the forum and searches for ones with the VR tag, then it constructs a Microsoft Word file with the names of the found game titles and the links to the specific page in the forum.
+As a casual VR player and a pirate at that 🏴‍☠️, I constantly check forums (e.a https://cs.rin.ru) for new releases of VR games. Therefore, I've created an automated process which scans the first X pages of the forum and searches for ones with the VR tag, then it constructs a Microsoft Word file with the names of the found game titles and the links to the specific page in the forum. The links are created using Hyperlinks in the word document, the specific implementation of the function is from here: https://stackoverflow.com/questions/49192481/how-to-create-hyperlinks-in-apache-poi-word.
 
 The process is to write the command '!seekVR' on the server and then the CoronaBot will start the process and send you the file and reply in a private message on Discord:
 
