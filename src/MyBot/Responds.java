@@ -302,16 +302,18 @@ public class Responds extends ListenerAdapter {
 			} while (flag);
 		}
 
+		// CAR QUIZ
+
 		if (messageRaw.equalsIgnoreCase("!carAnswer") && carAnswer != null) {
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage(carAnswer).queue();
-			event.getChannel().sendFile(new File("./car." + carFormat)).queue();
+			event.getChannel().sendFile(new File("./CarGame/car." + carFormat)).queue();
 		}
 
 		if (messageRaw.equalsIgnoreCase("!clearcars")) {
 			FileWriter fw;
 			try {
-				fw = new FileWriter(new File(CoronaBot.FS_PATH + "/carBanList.txt"));
+				fw = new FileWriter(new File(CoronaBot.FS_PATH + "/CarGame/carBanList.txt"));
 				fw.write("");
 				fw.close();
 				event.getChannel().sendTyping().queue();
@@ -333,11 +335,11 @@ public class Responds extends ListenerAdapter {
 					isBanned = false;
 					counter++;
 					doc = Jsoup.connect("https://www.generatormix.com/random-car-model-generator").get();
-					os = new FileOutputStream("./car.jpg");
+					os = new FileOutputStream("./CarGame/car.jpg");
 					sCar = doc.getElementsByClass("lazy thumbnail aspect-wide-contain").first();
 
 					// Create a ban list
-					Scanner banList = new Scanner(new File(CoronaBot.FS_PATH + "/carBanList.txt"));
+					Scanner banList = new Scanner(new File(CoronaBot.FS_PATH + "/CarGame/carBanList.txt"));
 					while (banList.hasNextLine())
 						if (banList.nextLine().contains(sCar.absUrl("data-src")))
 							isBanned = true;
@@ -350,7 +352,7 @@ public class Responds extends ListenerAdapter {
 				} while (isBanned);
 				String link = sCar.absUrl("data-src");
 				InputStream linkConnection = new URL(link).openConnection().getInputStream();
-				FileWriter fw = new FileWriter(new File(CoronaBot.FS_PATH + "/carBanList.txt"), true);
+				FileWriter fw = new FileWriter(new File(CoronaBot.FS_PATH + "/CarGame/carBanList.txt"), true);
 				fw.write(sCar.absUrl("data-src") + "\n");
 				fw.close();
 				byte[] b = new byte[2048];
@@ -360,14 +362,14 @@ public class Responds extends ListenerAdapter {
 
 				os.close();
 
-				BufferedImage carImg = ImageIO.read(new FileInputStream("./car.jpg"));
+				BufferedImage carImg = ImageIO.read(new FileInputStream("./CarGame/car.jpg"));
 				BufferedImage carCropped = carImg.getSubimage((int) carImg.getWidth() / 3, 0,
 						(int) carImg.getWidth() - (int) carImg.getWidth() / 3,
 						(int) carImg.getHeight() - (int) carImg.getHeight() / 3);
-				FileOutputStream co = new FileOutputStream("./carCropped.jpg");
+				FileOutputStream co = new FileOutputStream("./CarGame/carCropped.jpg");
 				ImageIO.write(carCropped, "jpg", co);
 
-				event.getChannel().sendFile(new File("./carCropped.jpg")).queue();
+				event.getChannel().sendFile(new File("./CarGame/carCropped.jpg")).queue();
 
 				carAnswer = Jsoup.connect("https://yandex.com/images/search?rpt=imageview&url=" + link).get()
 						.getElementsByClass("CbirObjectResponse-Title").text();
@@ -380,6 +382,8 @@ public class Responds extends ListenerAdapter {
 				e.printStackTrace();
 			}
 		}
+
+		// ----
 
 		if (messageRaw.contains("!song: ")) {
 			calledBot = true;
