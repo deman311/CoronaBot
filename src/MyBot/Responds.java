@@ -86,42 +86,8 @@ public class Responds extends ListenerAdapter {
 				if (time.getHour() > 6 && time.getHour() < 10)
 					replyTo("בוקר", GetText.GetRandomText("BokerTov"));
 
-//				String[] names = { "דימה", "טימור", "אלון", "אלעד", "מתן", "דמיטרי", "בן הגבר" };
-//				for (String name : names)
-//					if (messageRaw.contains(name) && event.getMessage().getMentionedMembers().isEmpty()) {
-//						String res = null;
-//						switch (name) {
-//						case "דימה":
-//							if (messageRaw.contains("קדימה"))
-//								return;
-//							res = "<@633662715792982026>";
-//							break;
-//						case "טימור":
-//							res = "<@687978431299715148>";
-//							break;
-//						case "אלון":
-//							if (messageRaw.contains("שאלון"))
-//								return;
-//							res = "<@687980623419408445>";
-//							break;
-//						case "אלעד":
-//							res = "<@688825751818207362>";
-//							break;
-//						case "מתן":
-//							res = "<@381344453966954517>";
-//							break;
-//						case "דמיטרי":
-//							res = "<@442013487221309471>";
-//							break;
-//						case "בן הגבר":
-//							res = "<@312878485230321665>";
-//							break;
-//						}
-//						event.getChannel().sendMessage(res).queue();
-//					}
-
 				String[] namesBig = { "טימור", "אלעד", "מתן", "אירנה", "אלוהים", "חן", "אלון", "דימיטרי", "ויקטור",
-						"טינץ", "אביעד"};
+						"טינץ", "אביעד" };
 				for (String name : namesBig)
 					if (args[0].equalsIgnoreCase(name))
 						replyTo(name, GetText.GetRandomText(name, "ResToCall"), 2);
@@ -136,8 +102,15 @@ public class Responds extends ListenerAdapter {
 
 		if (event.getMember().getId().contains("633662715792982026")) {
 
-			if (messageRaw.contains("!seekVR"))
-				CoronaBot.vrUpdates();
+			if (messageRaw.contentEquals("!sendLinks"))
+				CoronaBot.decideSend(true);
+
+			if (messageRaw.contains("!seekVR")) {
+				event.getMessage().delete().queue();
+				event.getAuthor().openPrivateChannel().complete().sendMessage("Working on it, we'll send when done...").queue();
+				event.getChannel().sendTyping().queue();
+				CoronaBot.vrUpdates(event.getAuthor());
+			}
 
 			if (messageRaw.contains("!piratealert: "))
 				initGameSearch(messageRaw.replace("!piratealert: ", ""));
@@ -146,7 +119,7 @@ public class Responds extends ListenerAdapter {
 				event.getChannel().deleteMessageById(messageID).queue();
 				event.getChannel().sendMessage(messageRaw.replace("!say ", "")).queue();
 			}
-			
+
 		}
 
 		// --------------------------------------------------------------
