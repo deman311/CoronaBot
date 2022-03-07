@@ -1,4 +1,4 @@
-# CoronaBot ![alt text](botpic.png "Mr. CoronaBot")
+# CoronaBot ![alt text](/Readme%20Pictures/botpic.png "Mr. CoronaBot")
 A Discord bot for various tasks i.e easy-access replies (e.a links, songs, corona statistics), quote saving as a joke, minigames (e.a Poker, Car Model Guessing) and even a small RPG game completely made from scratch.
 
 This was my first year side project and sometimes I keep updating it to this day but the it's main purpose is for my own testing and code learning because it gives me an easy platform that has a lot of options in terms of API's such as Jsoup for accessing internet elements and website data.
