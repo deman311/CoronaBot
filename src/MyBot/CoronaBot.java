@@ -91,10 +91,10 @@ public abstract class CoronaBot {
 		// ---------------------------------------------------
 
 		getAllUsers();
-		decideSend(false);
+		sendDailyLinks();
 	}
 
-	public static void vrUpdates(User requestor) {
+	public static void vrUpdates() {
 		try {
 			Scanner read = new Scanner(new File(FS_PATH + "/VRTitles.txt"));
 			ArrayList<String> lastTitles = new ArrayList<String>();
@@ -106,7 +106,6 @@ public abstract class CoronaBot {
 				lastTitles.add(sb.toString());
 				sb = new StringBuilder();
 			}
-
 			FileWriter write = new FileWriter(new File(FS_PATH + "/VRTitles.txt"));
 			XWPFDocument wordFile = new XWPFDocument();
 			FileOutputStream out = new FileOutputStream(new File(FS_PATH + "/VRUpdates.docx"));
@@ -193,13 +192,12 @@ public abstract class CoronaBot {
 			write.flush();
 			write.close();
 			wc.close();
-			requestor.openPrivateChannel().complete().sendFile(new File(FS_PATH + "/VRUpdates.docx")).queue();
+			System.err.println("[VR Seeker] File Updated.");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			requestor.openPrivateChannel().complete().sendMessage("There was an ERROR (" + e.getMessage() + ")")
-					.queue();
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -217,56 +215,46 @@ public abstract class CoronaBot {
 				cthyperLink.getRArray(0), paragraph);
 	}
 
-	static Thread linker;
-
-	public static void decideSend(boolean instaSend) {
-		if (instaSend)
-			sendDailyLinks();
-		else if (linker == null || !linker.isAlive()) {
-			linker = new Thread(() -> {
-				while (true) {
-					int currentHour = LocalTime.now().getHour();
-					if (currentHour >= 7 && currentHour <= 8)
-						if (!LocalDate.now().getDayOfWeek().name().contentEquals("FRIDAY")
-								&& !LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY"))
-							sendDailyLinks();
-					try {
-						System.out.println("[Timer Info] System checked time at " + LocalTime.now());
-						Thread.sleep(60000 * 30); // wait half hour before next check
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-						break;
-					}
-				}
-			});
-			linker.start();
-		}
-	}
-
 	public static void sendDailyLinks() {
-		{
-			Lectures.readLastRead();
-			if (!Lectures.lastReadDate
-					.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
-				for (Entry<String, User> userEntry : users.entrySet()) {
-					EmbedBuilder info = new EmbedBuilder();
-					String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
-					String body = Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name());
+		new Thread(() -> {
+			while (true) {
+				int currentHour = LocalTime.now().getHour();
+				System.out.println("CURRENT HOUR: " + currentHour);
+				if (currentHour >= 7 && currentHour <= 8) {
+					if (!LocalDate.now().getDayOfWeek().name().contentEquals("SATURDAY")) {
+						Lectures.readLastRead();
+						if (!Lectures.lastReadDate
+								.contentEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
+							for (Entry<String, User> userEntry : users.entrySet()) {
+								EmbedBuilder info = new EmbedBuilder();
+								String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
+								String body = Lectures.getText(userEntry.getKey(),
+										LocalDate.now().getDayOfWeek().name());
 
-					if (body != null) {
-						day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
-						info.setTitle(day + " Links 🖥");
-						info.setColor(Color.blue);
-						info.setDescription(
-								"Good morning " + userEntry.getKey() + " ♥😁" + "\nHere are your daily links:\n\n");
-						info.appendDescription(body);
-						info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
-						users.get(userEntry.getKey()).openPrivateChannel().complete().sendMessage(info.build()).queue();
+								if (body != null) {
+									day = day.replaceFirst("" + day.charAt(0), ("" + day.charAt(0)).toUpperCase());
+									info.setTitle(day + " Links 🖥");
+									info.setColor(Color.blue);
+									info.setDescription("Good morning " + userEntry.getKey() + " ♥😁"
+											+ "\nHere are your daily links:\n\n");
+									info.appendDescription(body);
+									info.appendDescription("\n\nPlease tell Dima if you need anything else. 🙇‍♂️");
+									users.get(userEntry.getKey()).openPrivateChannel().complete()
+											.sendMessage(info.build()).queue();
+								}
+							}
+							Lectures.writeLastRead();
+						}
 					}
 				}
-				Lectures.writeLastRead();
+				try {
+					Thread.sleep(60000 * 60); // wait an hour before next check
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					break;
+				}
 			}
-		}
+		}).start();
 	}
 
 	public static Map<String, User> getAllUsers() {
