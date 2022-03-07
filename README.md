@@ -24,7 +24,7 @@ This feature uses Jsoup library in order to access the data at 'https://www.worl
 
 ![statistics](/assets/zombiespic.png "Corona Statistics")
 
-### Songs and videos
+### Songs and Videos
 A short exposition - I've found no way to access the search database or links from the YouTube site directly using the JDA bot, so I though of a workaround:
 * Google does support JDA access -> Search the song/video on google by constructing a search link.
 * If the search results of the first page contain a YouTube result, copy the first link (Most relevant by Google's standards) and return in as a message by the bot.
@@ -59,3 +59,14 @@ Google search link construction:
 ```
 
 ![songs](/assets/songpic.png "Pulling the strings")
+
+### Car Quiz
+This feature downloads a random image from an online API of random cars: 'https://www.generatormix.com/random-car-model-generator', then it does the following:
+* There is a default title for the car pictures in the site but it is mostly very lacking and unimformative in terms of specific models, therefore I use Yandex Image Search in order to search the image and get the title of the most relevant image which is most of the times the exact model of the car.
+* If unable to find the model by the Yandex Search, I simply use the default title.
+* The program crops the image randomly, I've found some golden ratio by cropping specifically close to the middle of the picture.
+* The cropped image is send in the chat and the users have to guess the model.
+
+This car title is saved in the answer variable that can be later pulled by typing the command: '!caranswer' if you thing you got the answer.
+
+![carquiz](/assets/carpic.png "Car Quiz")
