@@ -1,14 +1,16 @@
 # CoronaBot ![header](/assets/botpic.png "Mr. CoronaBot")
+##### Version 0.5
+
 A Discord bot for various tasks i.e easy-access replies (e.a links, songs, corona statistics), quote saving as a joke, minigames (e.a Poker, Car Model Guessing) and even a small RPG game completely made from scratch.
 
 This was my first year side project and sometimes I keep updating it to this day but the it's main purpose is for my own testing and code learning because it gives me an easy platform that has a lot of options in terms of API's such as Jsoup for accessing internet elements and website data.
 
 Because we started attending courses only through Zoom after the whole CoronaVirus pandemic, I've decided to create a bot on the Discord platform so that me and my friends, as students, could have a tool that would pass time during the long days of lecture attending, while sitting in front of the monitor at home. This made us feel more connected, less lonely and more inspired to engage with each other and use our Discord Server.
 
-## Feature Description
+## Feature Description ⭐
 This section is dedicated for a short summary of **some** of CoronaBot's features.
 
-### Corona Statistics
+### Corona Statistics 🧟
 This feature uses Jsoup library in order to access the data at 'https://www.worldometers.info/coronavirus/' website. It constructs a description using emojies and display statistics about the coronavirus worldwide and Israel's specific statistics by navigating to the relevant extracted data.
 ```
 			try {
@@ -24,7 +26,7 @@ This feature uses Jsoup library in order to access the data at 'https://www.worl
 
 ![statistics](/assets/zombiespic.png "Corona Statistics")
 
-### Songs and Videos
+### Songs and Videos 📹
 A short exposition - I've found no way to access the search database or links from the YouTube site directly using the JDA bot, so I though of a workaround:
 * Google does support JDA access -> Search the song/video on google by constructing a search link.
 * If the search results of the first page contain a YouTube result, copy the first link (Most relevant by Google's standards) and return in as a message by the bot.
@@ -60,7 +62,7 @@ Google search link construction:
 
 ![songs](/assets/songpic.png "Pulling the strings")
 
-### Car Quiz
+### Car Quiz 🚗
 This feature downloads a random image from an online API of random cars: 'https://www.generatormix.com/random-car-model-generator', then it does the following:
 * There is a default title for the car pictures in the site but it is mostly very lacking and unimformative in terms of specific models, therefore I use Yandex Image Search in order to search the image and get the title of the most relevant image which is most of the times the exact model of the car.
 * If unable to find the model by the Yandex Search, I simply use the default title.
@@ -71,8 +73,30 @@ This car title is saved in the answer variable that can be later pulled by typin
 
 ![carquiz](/assets/carpic.png "Car Quiz")
 
-### Poker
+### Poker 🎴
 One of my very first projects for the bot, The class generates a virtual deck which you can pull cards from (Removed from the array, non-repeating) and then, presumably after everybody have pulled a 'hand', you can pull the table cards (5 cards) and check who've won. This feature passed quite a lot of time when dealing with a speacially boring section in a lecture.
 - [ ] I've had a plan to write a game mechanic that actually controls the game flow and knows the rules - can tell who is the winner.
 
 ![poker](/assets/pokerpic.png "Playing Poker")
+
+### Daily Lecture Links ⏰
+This feature sends the relevant Zoom links to each of the users on the server by a txt file with a special format where the links are saved - which is prepared at every start of a semester and can be always updated when needed with new users and links.
+
+This specific feature runs on a thread. This thread is updated on the current time and date and every morning, not on weekends, between 7-8 AM sends the relevant links to everybody on the server via a private message on Discord.
+
+![links](/assets/linkspic.png "The message format you receive")
+
+### VR Updates 🕶️
+As a casual VR player and a pirate at that 🏴‍☠️, I constantly check forums (e.a https://cs.rin.ru) for new releases of VR games. Therefore, I've created an automated process which scans the first X pages of the forum and searches for ones with the VR tag, then it constructs a Microsoft Word file with the names of the found game titles and the links to the specific page in the forum.
+
+The process is to write the command '!seekVR' on the server and then the CoronaBot will start the process and send you the file and reply in a private message on Discord:
+
+![vrmessage](/assets/vrupdatepic.png "seekVR private reply message")
+
+And here is an example of an output file.
+
+The titles are also being saved and compared each time to a txt file with previous finds and that way the new titles are marked with red:
+
+⚫ is regular titles. 🔴 is new titles.
+
+![vrdoc](/assets/wordvrpic.png "VR titles output file example")
