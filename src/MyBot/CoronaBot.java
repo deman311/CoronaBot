@@ -65,7 +65,7 @@ public abstract class CoronaBot {
 	public static String[] lecNames;
 
 	public static void main(String[] args) throws LoginException {
-		jda = JDABuilder.createDefault("Njg5NDU4MzcxNjM1ODM5MDU3.XnIFqQ.tWfb9btyVCCDUqxoMHJ5UWwZj8w").build();
+		jda = JDABuilder.createDefault("Njg5NDU4MzcxNjM1ODM5MDU3.XnDKJQ.etReq09C6MbSgo2_tgluqCwppFA").build();
 		jda.getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
 		jda.getPresence().setActivity(Activity.playing("AfekaLands"));
 		jda.addEventListener(new Responds());

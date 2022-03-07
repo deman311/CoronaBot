@@ -521,45 +521,31 @@ public class Responds extends ListenerAdapter {
 		// POKER
 
 		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "pokertable")) {
-			String[] pokertable = new String[5];
-
-			if (CoronaBot.deckCount < 10) {
-				event.getChannel().sendMessage("You are out of cards! Reshuffle!").queue();
-				return;
+			if (Poker.getDeckCount() < 5) {
+				event.getChannel().sendMessage("You are out of cards! open a new deck using !newdeck").queue();
+				return; // stop the statement code exec
 			}
-			CoronaBot.deckCount -= 5;
-			Poker.GetTable(pokertable);
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage("POKER-TABLE:\n").queue();
-			StringBuilder table = new StringBuilder();
-			for (String card : pokertable)
-				table.append(card + " ");
-
-			event.getChannel().sendMessage(table.toString()).queue();
-			Poker.NewDeck();
+			event.getChannel().sendMessage(Poker.getTable()).queue();
 		}
 
 		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "pokerhand")) {
-			String card1 = null;
-			String card2 = null;
-			if (CoronaBot.deckCount < 10) {
-				event.getChannel().sendMessage("You are out of cards! Reshuffle!").queue();
+			if (Poker.getDeckCount() < 7) {
+				event.getChannel().sendMessage("Not enough cards left in deck to play, open a new deck using !newdeck")
+						.queue();
 				return;
 			}
-			CoronaBot.deckCount -= 2;
-			card1 = Poker.GetCard();
-			card2 = Poker.GetCard();
 
 			event.getChannel().sendTyping().queue();
-			event.getChannel().sendMessage("Your cards are: " + Poker.cardNum(card1))
-					.append(Poker.cardSign(card1) + " and " + Poker.cardNum(card2)).append(Poker.cardSign(card2))
-					.queue();
+			event.getChannel().sendMessage("Your cards are: " + Poker.getCard() + " and " + Poker.getCard()).queue();
 		}
 
-		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "shuffle")) {
+		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "!newdeck")) {
 			Poker.NewDeck();
 			event.getChannel().sendTyping().queue();
-			event.getChannel().sendMessage("Unlike a human, took me 0.0003 to shuffle.\nShuffled!").queue();
+			event.getChannel()
+					.sendMessage("Unlike a human, it took me 0.0003 seconds to shuffle.\nYou have a new deck!").queue();
 		}
 
 		// -----
