@@ -65,7 +65,10 @@ public abstract class CoronaBot {
 	public static boolean grossEnable = false;
 	public static String[] lecNames;
 
-	public void main(String[] args) throws LoginException {
+	public static void main(String[] args) throws LoginException {
+		// decide on OS for different file systems
+		FS_PATH = SystemUtils.IS_OS_LINUX ? "/home/ITmania/git/CoronaBot/Files" : "./Files";
+		AfekaLandsController.FS_PATH = FS_PATH; // AfekaLands should use the same path
 
 		String key = readJDAkey();
 		if (key == null) {
@@ -86,11 +89,6 @@ public abstract class CoronaBot {
 		// AFEKA LANDS RELATED -------------------------------
 
 		jda.addEventListener(new AfekaLandsController());
-
-		FS_PATH = SystemUtils.IS_OS_LINUX ? "/home/ITmania/git/CoronaBot/Files" : "./Files"; // decide on OS for
-																								// different file
-																								// systems.
-		AfekaLandsController.FS_PATH = FS_PATH; // same for afekalands FS_PATH
 		Skill.readAll(); // load all the skills from file
 		AfekaLandsController.checkPlayer();
 		if (AfekaLandsController.hasPlayer()) {
@@ -109,7 +107,7 @@ public abstract class CoronaBot {
 	 * 
 	 * @return
 	 */
-	private String readJDAkey() {
+	private static String readJDAkey() {
 		File keyFile = new File(FS_PATH + "/JDAkey.txt");
 		try {
 			Scanner read = new Scanner(keyFile);

@@ -28,4 +28,15 @@ description: Good Robe, is a HEAD with a Defense of 7
 price: 3
 def: 7
 type: HEAD
-
+#
+name: Good Leather Pants
+description: Good Leather Pants, is a LEG with a Defense of 12
+price: 2
+def: 12
+type: LEG
+#
+name: Weak Wool Pants
+description: Weak Wool Pants, is a LEG with a Defense of 7
+price: 1
+def: 7
+type: LEG

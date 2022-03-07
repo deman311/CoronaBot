@@ -1,9 +1,9 @@
-NAME: NigerBob5
-CREATOR: Timor
-LEVEL: 3
-HP: 110
-ENG: 30
-EXP: 54
+NAME: AlphaBob
+CREATOR: Shwifty
+LEVEL: 1
+HP: 50
+ENG: 20
+EXP: 0
 SKILLS: 
-EQP: [w]White Blade, [a]Good Robe, 
-INV: Coins#2, Energy Potion#1, Health Potion#1, 
+EQP: 
+INV: 

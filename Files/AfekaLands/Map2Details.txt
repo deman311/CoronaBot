@@ -1,2 +1,2 @@
-Map Size: 616 549
-Player Pos: 390 188
+Map Size: 519 708
+Player Pos: 28 682

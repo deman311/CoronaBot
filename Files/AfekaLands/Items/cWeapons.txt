@@ -42,3 +42,22 @@ price: 3
 damage: 19
 crit: 3 5
 description: White Blade, is a sword with a Damage of 19, and a Critical Rate of 3 Damage with 5% Chance.
+
+#
+name: Green Toothpick
+price: 3
+damage: 15
+crit: 9 13
+description: Green Toothpick, is a sword with a Damage of 15, and a Critical Rate of 9 Damage with 13% Chance.
+#
+name: EPIC White Stinger
+price: 6
+damage: 34
+crit: 8 8
+description: EPIC White Stinger, is a sword with a Damage of 34, and a Critical Rate of 8 Damage with 8% Chance.
+#
+name: Green Toothpick
+price: 4
+damage: 14
+crit: 13 6
+description: Green Toothpick, is a sword with a Damage of 14, and a Critical Rate of 13 Damage with 6% Chance.
