@@ -70,15 +70,20 @@ public abstract class CoronaBot {
 		jda.getPresence().setActivity(Activity.playing("AfekaLands"));
 		jda.addEventListener(new Responds());
 
+		Poker.NewDeck(); // create a new deck for poker games
+		getAllUsers(); // create an arraylist for all the relevant users
+		decideSend(false);
+		// PirateBot.start(); // unsafe thread leak
+
 		// AFEKA LANDS RELATED -------------------------------
 
 		jda.addEventListener(new AfekaLandsController());
+
 		FS_PATH = SystemUtils.IS_OS_LINUX ? "/home/ITmania/git/CoronaBot/Files" : "./Files"; // decide on OS for
 																								// different file
 																								// systems.
-		AfekaLandsController.FS_PATH = FS_PATH;
-		Poker.NewDeck();
-		Skill.readAll();
+		AfekaLandsController.FS_PATH = FS_PATH; // same for afekalands FS_PATH
+		Skill.readAll(); // load all the skills from file
 		AfekaLandsController.checkPlayer();
 		if (AfekaLandsController.hasPlayer()) {
 			MapGen2.readMap();
@@ -86,12 +91,7 @@ public abstract class CoronaBot {
 		}
 		Leaderboards.checkWrite();
 
-		// PirateBot.start();
-
 		// ---------------------------------------------------
-
-		getAllUsers();
-		decideSend(false);
 	}
 
 	public static void vrUpdates(User requestor) {
@@ -218,9 +218,11 @@ public abstract class CoronaBot {
 	}
 
 	static Thread linker; // related to the link send function
+
 	/***
 	 * 
-	 * @param instaSend - Decides if the function instantly sends the daily links (TRUE) or just activates the thread (FALSE).
+	 * @param instaSend - Decides if the function instantly sends the daily links
+	 *                  (TRUE) or just activates the thread (FALSE).
 	 */
 	public static void decideSend(boolean instaSend) {
 		if (instaSend)
@@ -254,6 +256,8 @@ public abstract class CoronaBot {
 				for (Entry<String, User> userEntry : users.entrySet()) {
 					EmbedBuilder info = new EmbedBuilder();
 					String day = LocalDate.now().getDayOfWeek().name().toLowerCase();
+
+					// Get lectures by day of the week
 					String body = Lectures.getText(userEntry.getKey(), LocalDate.now().getDayOfWeek().name());
 
 					if (body != null) {
