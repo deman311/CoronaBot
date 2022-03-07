@@ -2,6 +2,7 @@ package MyBot;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -64,8 +65,15 @@ public abstract class CoronaBot {
 	public static boolean grossEnable = false;
 	public static String[] lecNames;
 
-	public static void main(String[] args) throws LoginException {
-		jda = JDABuilder.createDefault("Njg5NDU4MzcxNjM1ODM5MDU3.XnDKJQ.etReq09C6MbSgo2_tgluqCwppFA").build();
+	public void main(String[] args) throws LoginException {
+
+		String key = readJDAkey();
+		if (key == null) {
+			System.err.println("[CRITICAL ERROR] Could not initialize the JDA - Could not read the key.");
+			return;
+		}
+		jda = JDABuilder.createDefault(key).build();
+
 		jda.getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
 		jda.getPresence().setActivity(Activity.playing("AfekaLands"));
 		jda.addEventListener(new Responds());
@@ -92,6 +100,27 @@ public abstract class CoronaBot {
 		Leaderboards.checkWrite();
 
 		// ---------------------------------------------------
+	}
+
+	/***
+	 * This function is for the sole purpose of hiding the private JDA key from the
+	 * internet when uploading to Github. The file that only exists locally on my
+	 * systems and contains the private key. This file is not shared with Github.
+	 * 
+	 * @return
+	 */
+	private String readJDAkey() {
+		File keyFile = new File(FS_PATH + "/JDAkey.txt");
+		try {
+			Scanner read = new Scanner(keyFile);
+			String key = read.nextLine();
+			read.close();
+			return key;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public static void vrUpdates(User requestor) {
