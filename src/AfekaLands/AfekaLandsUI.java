@@ -6,7 +6,6 @@
  /_/   \_\_|  \___|_|\_\__,_|_____\__,_|_| |_|\__,_|___/
                                                                   
 */// (c) Dmitry Gribovsky 317088573
-
 package AfekaLands;
 
 import java.io.BufferedReader;
