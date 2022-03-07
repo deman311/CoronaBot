@@ -692,9 +692,12 @@ public class AfekaLandsController extends ListenerAdapter {
 						}
 					}
 
-					if (player1.getHP() == 0 && (messageRaw.charAt(0) == '!' || messageRaw.charAt(0) == '@'))
+					// The player has died
+					if (player1.getHP() == 0 && (messageRaw.charAt(0) == '!' || messageRaw.charAt(0) == '@')) {
 						event.getChannel().sendMessage("https://tenor.com/view/game-over-insert-coins-gif-12235828")
 								.queue();
+						enemy1 = null; // clear the enemy so that the fighting doesn't proceed.
+					}
 				} else if (messageRaw.equalsIgnoreCase("@loot")) {
 					if (enemy1.isDead() && !enemy1.isLooted()) {
 						StringBuilder sb = new StringBuilder();
