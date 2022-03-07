@@ -46,7 +46,7 @@ import net.dv8tion.jda.api.entities.User;
 
 public abstract class CoronaBot {
 
-	// CORONABOT VERSION 0.3.9.5
+	// CORONABOT VERSION 0.5
 
 	public static JDA jda;
 	public static String prefix = "!";
@@ -217,8 +217,11 @@ public abstract class CoronaBot {
 				cthyperLink.getRArray(0), paragraph);
 	}
 
-	static Thread linker;
-
+	static Thread linker; // related to the link send function
+	/***
+	 * 
+	 * @param instaSend - Decides if the function instantly sends the daily links (TRUE) or just activates the thread (FALSE).
+	 */
 	public static void decideSend(boolean instaSend) {
 		if (instaSend)
 			sendDailyLinks();

@@ -107,7 +107,8 @@ public class Responds extends ListenerAdapter {
 
 			if (messageRaw.contains("!seekVR")) {
 				event.getMessage().delete().queue();
-				event.getAuthor().openPrivateChannel().complete().sendMessage("Working on it, we'll send when done...").queue();
+				event.getAuthor().openPrivateChannel().complete().sendMessage("Working on it, we'll send when done...")
+						.queue();
 				event.getChannel().sendTyping().queue();
 				CoronaBot.vrUpdates(event.getAuthor());
 			}
@@ -513,6 +514,8 @@ public class Responds extends ListenerAdapter {
 			}
 		}
 
+		// POKER
+
 		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "pokertable")) {
 			String[] pokertable = new String[5];
 
@@ -524,10 +527,11 @@ public class Responds extends ListenerAdapter {
 			Poker.GetTable(pokertable);
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage("POKER-TABLE:\n").queue();
-			for (String cards : pokertable) {
-				event.getChannel().sendMessage("\n" + cards).queue();
-			}
+			StringBuilder table = new StringBuilder();
+			for (String card : pokertable)
+				table.append(card + " ");
 
+			event.getChannel().sendMessage(table.toString()).queue();
 			Poker.NewDeck();
 		}
 
@@ -553,6 +557,8 @@ public class Responds extends ListenerAdapter {
 			event.getChannel().sendTyping().queue();
 			event.getChannel().sendMessage("Unlike a human, took me 0.0003 to shuffle.\nShuffled!").queue();
 		}
+
+		// -----
 
 		if (event.getMessage().getContentRaw().contains("בוט מה עם הקורונה?")
 				|| args[0].equalsIgnoreCase(CoronaBot.prefix + "zombies")) {
