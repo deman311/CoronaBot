@@ -430,18 +430,18 @@ public class AfekaLandsController extends ListenerAdapter {
 					if (messageRaw.equalsIgnoreCase("@selljunk")) {
 						int profit = 0, counter = 0;
 						event.getChannel().deleteMessageById(messageID).queue();
-						for (Item item : player1.getInv().toArray(new Item[player1.getInv().size()]))
+						for (Item item : player1.getInv().toArray(new Item[player1.getInv().size()])) {
+							counter++;
+							profit += Math.ceil(item.getPrice() / 5f); // minimum sell price is 1
+
 							if (item.getSort() == Sort.WEAPON) {
-								counter++;
-								profit += item.getPrice() / 5;
 								Weapon.removeWeapon((Weapon) item);
 								player1.takeOut((Weapon) item);
 							} else if (item.getSort() == Sort.ARMOR) {
-								counter++;
-								profit += item.getPrice() / 5;
 								Armor.removeArmor((Armor) item);
 								player1.takeOut((Armor) item);
 							}
+						}
 						player1.putIn(Sort.COIN, profit);
 						event.getChannel().editMessageById(shopID, AfekaLandsUI.ShopMenu(currentShop)).queue();
 						if (counter != 1)
@@ -701,34 +701,33 @@ public class AfekaLandsController extends ListenerAdapter {
 				} else if (messageRaw.equalsIgnoreCase("@loot")) {
 					if (enemy1.isDead() && !enemy1.isLooted()) {
 						StringBuilder sb = new StringBuilder();
-						sb.append("Found:\n");
-						for (Item item : enemy1.getLoot()) {
-							if (item.getSort() != Sort.WEAPON && item.getSort() != Sort.ARMOR)
-								player1.putIn(item.getSort(), item.getSize());
-							else if (item.getSort() == Sort.ARMOR)
-								player1.putIn((Armor) item);
-							else
-								player1.putIn((Weapon) item);
-							sb.append("(" + item.getSize() + ")" + item.getName() + "\n");
+						if (enemy1.getLoot().size() > 0) {
+							sb.append("Found:\n");
+							for (Item item : enemy1.getLoot()) {
+								if (item.getSort() != Sort.WEAPON && item.getSort() != Sort.ARMOR)
+									player1.putIn(item.getSort(), item.getSize());
+								else if (item.getSort() == Sort.ARMOR)
+									player1.putIn((Armor) item);
+								else
+									player1.putIn((Weapon) item);
+								sb.append("(" + item.getSize() + ")" + item.getName() + "\n");
 
-							switch (item.getSort()) {
-							case ARMOR:
-								sb.deleteCharAt(sb.length() - 1);
-								sb.append("[DEF:" + ((Armor) item).getDEF() + "]\n");
-								break;
-							case WEAPON:
-								sb.deleteCharAt(sb.length() - 1);
-								sb.append("[DMG:" + ((Weapon) item).getDamage() + "]\n");
-								break;
+								switch (item.getSort()) {
+								case ARMOR:
+									sb.deleteCharAt(sb.length() - 1);
+									sb.append("[DEF:" + ((Armor) item).getDEF() + "]\n");
+									break;
+								case WEAPON:
+									sb.deleteCharAt(sb.length() - 1);
+									sb.append("[DMG:" + ((Weapon) item).getDamage() + "]\n");
+									break;
 
-							default:
-								break;
+								default:
+									break;
+								}
 							}
-						}
-						if (sb.toString().isEmpty())
+						} else
 							sb.append("Nothing.");
-						else
-							sb.deleteCharAt(sb.length() - 1);
 						event.getChannel().sendMessage(sb.toString()).queue();
 					} else
 						event.getChannel().sendMessage("No one to loot.").queue();

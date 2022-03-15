@@ -36,7 +36,7 @@ public class Character {
 			maxENG = 20 + 5 * (level - 1);
 			HP = 50;
 			ENG = 20;
-			baseDMG = 30 * level;
+			baseDMG = (int) (30 * Math.log(level));
 			baseARM = 1 * level;
 			updateStatus();
 		}
@@ -266,7 +266,7 @@ public class Character {
 			maxENG = 20 + 5 * (level - 1);
 			HP = maxHP;
 			ENG = maxENG;
-			baseDMG += 30;
+			baseDMG = (int) (30 * Math.log(level));
 			baseARM += 1;
 		}
 		updateStatus();
@@ -396,7 +396,7 @@ public class Character {
 		maxEXP = 50 + levelConst * levelConst / 10000;
 		maxHP = 50 + (level * level - level) * 10;
 		maxENG = 20 + 5 * (level - 1);
-		baseDMG = 30 * level;
+		baseDMG = (int) (30 * Math.log(level));
 		baseARM = 1 * level;
 		updateStatus();
 	}

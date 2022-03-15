@@ -7,7 +7,7 @@ public interface FightSystem {
 	public static Random rand = new Random();
 
 	public static String swordMove(Character p1, Enemy e1) {
-		int pD = p1.getDMG(), eD = rand.nextInt(e1.getDamage() / 2) + e1.getDamage() / 2;
+		int pD = p1.getDMG(), eD = rand.nextInt(e1.getDamage() / 2 + 1) + e1.getDamage() / 2;
 		pD = pD / 2 + rand.nextInt(pD / 2);
 		StringBuilder message = new StringBuilder();
 

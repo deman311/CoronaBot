@@ -35,11 +35,11 @@ public class Enemy {
 
 		levelConst = level * 200;
 
-		hp = 50 + level * level * (5 + rand.nextInt(10));
+		hp = 50 + level * (5 + rand.nextInt(level));
 		maxHP = hp;
 		def = (hp) / (10 + rand.nextInt(level) * 20);
 		exp = levelConst * levelConst / 500000 + 25;
-		damage = (int) (level * 20 + (rand.nextInt(level) + 1) * rand.nextInt(level) * 5);
+		damage = (int) (level * Math.ceil(Math.sqrt(level)) * (rand.nextInt(level) + 3));
 
 		if (AfekaLandsController.player1.getLevel() < level)
 			exp += 0.25 * (level - AfekaLandsController.player1.getLevel());
