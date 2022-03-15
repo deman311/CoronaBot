@@ -129,6 +129,8 @@ First we kill: ![deadmob](/assets/AfekaLands/deadmob.png "Die you crazy bat")
 
 Then we loot: ![loot](/assets/AfekaLands/loot.png "Looting some things")
 
+---
+
 ### Fighting ⚔️
 There are 2 kinds of attacks: swords and spells (currently there's only one implemented being the fireball🔥, but the basis code is written to support more spells - You can edit the spells.txt file and implement different spells with different damage, emojies and overall stats). Using these attacks you engage in battles in AfekaLands and fight various randomly generated enemies.
 
@@ -137,7 +139,7 @@ There are 2 kinds of attacks: swords and spells (currently there's only one impl
 #### Random Stats 🧮
 The game includes Enemies, Weapons & Armor that, when created, generate with random stats and modifiers. Thus, Enemies can be: Though, Strong, Crazy, Small, Weak etc... Weapons & Armor can be Strong, Epic, Legendary, Weak etc...
 
-![enemy stats](/assets/AfekaLands/fight.png "A random enemy") ![enemy stats](/assets/AfekaLands/equipment.png "A random enemy")
+![enemy stats](/assets/AfekaLands/fight.png "A random enemy")
 
 ### Equipment 🛡️
 The player has an option to view his inventory, wear and takeoff equipment and see the status effects of each one, all of this by writing specific chat commands.
