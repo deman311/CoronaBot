@@ -10,15 +10,16 @@ import java.util.Random;
 
 abstract class GetText {
 	public static Random rand = new Random();
-	
+
 	public static String GetRandomText(String desired) {
 		String[] Text = null;
 		String line;
 		StringBuilder sb = new StringBuilder();
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(getFileName(desired)),"UTF8"));
-			while((line = reader.readLine())!=null) {
-				sb.append(line+"\n");
+			BufferedReader reader = new BufferedReader(
+					new InputStreamReader(new FileInputStream(getFileName(desired)), "UTF8"));
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
 			}
 			Text = sb.toString().split("\n");
 			reader.close();
@@ -34,18 +35,19 @@ abstract class GetText {
 		}
 		return Text[rand.nextInt(Text.length)];
 	}
-	
-	public static String GetRandomText(String specific,String desired) {
+
+	public static String GetRandomText(String specific, String desired) {
 		String[] Text = null;
 		String line;
 		StringBuilder sb = new StringBuilder();
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(getFileName(desired)),"UTF8"));
-			while((line = reader.readLine())!=null)
-				if(line.startsWith(specific)) {
-					sb.append(line.replace(specific + ": ","") + "\n");
+			BufferedReader reader = new BufferedReader(
+					new InputStreamReader(new FileInputStream(getFileName(desired)), "UTF8"));
+			while ((line = reader.readLine()) != null)
+				if (line.startsWith(specific)) {
+					sb.append(line.replace(specific + ": ", "") + "\n");
 					Text = sb.toString().split("\n");
-			}
+				}
 			reader.close();
 		} catch (UnsupportedEncodingException e) {
 			System.out.println("Unsupported Format!");
@@ -57,21 +59,21 @@ abstract class GetText {
 			System.out.println("Error Reading From The File!");
 			e.printStackTrace();
 		}
-		
+
 		return Text[rand.nextInt(Text.length)];
 	}
-	
+
 	private static String getFileName(String desired) {
-		String fileName=null;
-		switch(desired) {
+		String fileName = null;
+		switch (desired) {
 		case "BokerTov":
-			fileName = CoronaBot.FS_PATH + "/BokerTov.txt";
+			fileName = CoronaBot.FS_PATH + "/Quotes/BokerTov.txt";
 			break;
 		case "ResToCall":
-			fileName = CoronaBot.FS_PATH + "/ResToCall.txt";
+			fileName = CoronaBot.FS_PATH + "/Quotes/ResToCall.txt";
 			break;
 		}
-		
+
 		return fileName;
 	}
 }

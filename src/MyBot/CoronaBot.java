@@ -123,7 +123,7 @@ public abstract class CoronaBot {
 
 	public static void vrUpdates(User requestor) {
 		try {
-			Scanner read = new Scanner(new File(FS_PATH + "/VRTitles.txt"));
+			Scanner read = new Scanner(new File(FS_PATH + "/VRsearch/VRTitles.txt"));
 			ArrayList<String> lastTitles = new ArrayList<String>();
 			StringBuilder sb = new StringBuilder();
 			while (read.hasNext()) {
@@ -134,19 +134,17 @@ public abstract class CoronaBot {
 				sb = new StringBuilder();
 			}
 
-			FileWriter write = new FileWriter(new File(FS_PATH + "/VRTitles.txt"));
+			FileWriter write = new FileWriter(new File(FS_PATH + "/VRsearch/VRTitles.txt"));
 			XWPFDocument wordFile = new XWPFDocument();
-			FileOutputStream out = new FileOutputStream(new File(FS_PATH + "/VRUpdates.docx"));
+			FileOutputStream out = new FileOutputStream(new File(FS_PATH + "/VRsearch/VRUpdates.docx"));
 			List<DomElement> rows = null;
 			Iterator<DomElement> games = null;
 
 			wordFile.createHeader(HeaderFooterType.DEFAULT).createParagraph().createRun().setText("© Dmitry Gribovsky");
 			XWPFRun run = wordFile.createParagraph().createRun();
 			run.setBold(true);
-			run.addTab();
-			run.addTab();
-			run.addTab();
-			run.addTab();
+			for (int i = 0; i < 4; i++)
+				run.addTab();
 			run.setFontSize(20);
 			run.setText("Pirated VR Games");
 			run = wordFile.getParagraphs().get(0).createRun();
@@ -159,57 +157,51 @@ public abstract class CoronaBot {
 			wc.waitForBackgroundJavaScript(5000);
 			HtmlPage page = null;
 
+			String url;
 			for (int j = 0; j < 5; j++) {
-				if (j == 0)
-					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10");
-				else if (j == 1)
-					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=100");
-				else if (j == 2)
-					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=200");
-				else if (j == 3)
-					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=300");
-				else if (j == 4)
-					page = wc.getPage("https://cs.rin.ru/forum/viewforum.php?f=10&start=400");
+				url = "https://cs.rin.ru/forum/viewforum.php?f=10";
+				if (j > 0)
+					url = url + "&start=" + (j * 100);
+				page = wc.getPage(url);
+			}
 
-				rows = page.getByXPath("//a[@class='topictitle']");
-				games = rows.iterator();
-				int i = 0;
+			rows = page.getByXPath("//a[@class='topictitle']");
+			games = rows.iterator();
+			int i = 0;
 
-				while (games.hasNext()) {
-					if (i < 10) {
-						games.next();
-						i++;
-					} else {
-						DomElement game = games.next();
-						String link;
-						if (game.getTextContent().contains("VR Only")
-								|| game.getTextContent().contains("VR Optional")) {
-							link = "https://cs.rin.ru/forum/" + game.getAttribute("href").substring(2);
-							sb.append(game.getTextContent() + "\n" + link + "\n\n");
+			while (games.hasNext()) {
+				if (i < 10) {
+					games.next();
+					i++;
+				} else {
+					DomElement game = games.next();
+					String link;
+					if (game.getTextContent().contains("VR Only") || game.getTextContent().contains("VR Optional")) {
+						link = "https://cs.rin.ru/forum/" + game.getAttribute("href").substring(2);
+						sb.append(game.getTextContent() + "\n" + link + "\n\n");
 
-							run.addCarriageReturn();
-							run.addCarriageReturn();
+						run.addCarriageReturn();
+						run.addCarriageReturn();
 
-							boolean found = false;
-							for (String title : lastTitles)
-								if (title.contains(game.getTextContent()))
-									found = true;
+						boolean found = false;
+						for (String title : lastTitles)
+							if (title.contains(game.getTextContent()))
+								found = true;
 
-							if (found)
-								run.setText("☠ " + game.getTextContent().replace("[Info] ", "") + " --- ");
-							else {
-								XWPFRun run2 = wordFile.getParagraphs().get(0).createRun();
-								run2.setColor("F71616");
-								run2.setBold(true);
-								run2.setText("☠ " + game.getTextContent().replace("[Info] ", "") + " --- ");
-								run = wordFile.getParagraphs().get(0).createRun();
-							}
-							XWPFHyperlinkRun hlink = createHyperlinkRun(wordFile.getParagraphs().get(0), link);
-							hlink.setText("Forum Link");
-							hlink.setColor("0000FF");
-							hlink.setUnderline(UnderlinePatterns.SINGLE);
+						if (found)
+							run.setText("☠ " + game.getTextContent().replace("[Info] ", "") + " --- ");
+						else {
+							XWPFRun run2 = wordFile.getParagraphs().get(0).createRun();
+							run2.setColor("F71616");
+							run2.setBold(true);
+							run2.setText("☠ " + game.getTextContent().replace("[Info] ", "") + " --- ");
 							run = wordFile.getParagraphs().get(0).createRun();
 						}
+						XWPFHyperlinkRun hlink = createHyperlinkRun(wordFile.getParagraphs().get(0), link);
+						hlink.setText("Forum Link");
+						hlink.setColor("0000FF");
+						hlink.setUnderline(UnderlinePatterns.SINGLE);
+						run = wordFile.getParagraphs().get(0).createRun();
 					}
 				}
 			}
@@ -220,8 +212,10 @@ public abstract class CoronaBot {
 			write.flush();
 			write.close();
 			wc.close();
-			requestor.openPrivateChannel().complete().sendFile(new File(FS_PATH + "/VRUpdates.docx")).queue();
-		} catch (MalformedURLException e) {
+			requestor.openPrivateChannel().complete().sendFile(new File(FS_PATH + "/VRsearch/VRUpdates.docx")).queue();
+		} catch (
+
+		MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {

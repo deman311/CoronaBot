@@ -125,6 +125,7 @@ public class Responds extends ListenerAdapter {
 
 		// --------------------------------------------------------------
 
+		// VIZINER cyper test
 		if (messageRaw.contains("!viziner ")) {
 			try {
 				String[] data = messageRaw.split(" ");
@@ -607,8 +608,13 @@ public class Responds extends ListenerAdapter {
 
 		if (messageRaw.equalsIgnoreCase("!rando")) {
 			event.getMessage().delete().queue();
+
+			// feedback
+			event.getChannel().sendTyping().queue();
+			event.getChannel().sendMessage("Searching for the one...").queue();
+
 			try {
-				FileOutputStream os = new FileOutputStream("./rando.jpg");
+				FileOutputStream os = new FileOutputStream(CoronaBot.FS_PATH + "/rando.jpg");
 				InputStream linkConnection = new URL("https://thispersondoesnotexist.com/image").openConnection()
 						.getInputStream();
 				byte[] b = new byte[2048];
@@ -618,7 +624,7 @@ public class Responds extends ListenerAdapter {
 
 				os.close();
 
-				ImageIO.read(new FileInputStream("./rando.jpg"));
+				ImageIO.read(new FileInputStream(CoronaBot.FS_PATH + "/rando.jpg"));
 
 				int gender = rand.nextInt(2) + 2, rarity = rand.nextInt(2) + 2;
 				doc = Jsoup.connect("http://random-name-generator.info/index.php?n=10&g=" + gender + "&st=" + rarity)
@@ -635,10 +641,11 @@ public class Responds extends ListenerAdapter {
 					box.setColor(Color.PINK);
 					gString = "Female";
 				}
-				box.appendDescription("🧬 Gender: " + gString + "\n📝 Name: " + name + "\n🔢 Age: " + rand.nextInt(10));
+				box.appendDescription("🧬 Gender: " + gString + "\n📝 Name: " + name + "\n🔢 Age: " + rand.nextInt(80));
 				box.setImage("attachment://rando.jpg");
 
-				event.getChannel().sendMessage(box.build()).addFile(new File("./rando.jpg"), "rando.jpg").queue();
+				event.getChannel().sendMessage(box.build())
+						.addFile(new File(CoronaBot.FS_PATH + "/rando.jpg"), "rando.jpg").queue();
 				box.clear();
 				// event.getChannel().sendFile(new File("./rando.jpg")).queue();
 				Thread.sleep(1000);
@@ -675,20 +682,6 @@ public class Responds extends ListenerAdapter {
 			Elements articles = doc.select("section").select("article");
 			Element ie = articles.get(rand.nextInt(articles.size())).select("img").first();
 			String abs = ie.absUrl("src");
-			event.getChannel().sendMessage(abs).queue();
-		}
-
-		if (args[0].equalsIgnoreCase(CoronaBot.prefix + "vic")) {
-			try {
-				doc = Jsoup.connect("https://moodle.afeka.ac.il/message/output/popup/notifications.php").get();
-			} catch (IOException e) {
-				System.out.println("Could not get a meme.");
-				e.printStackTrace();
-			}
-			Elements articles = doc.getElementsByClass("content");
-			Element ie = articles.select("br").select("#text").first();
-			String abs = null;
-			abs = ie.text();
 			event.getChannel().sendMessage(abs).queue();
 		}
 
@@ -733,9 +726,9 @@ public class Responds extends ListenerAdapter {
 			info.clear();
 		}
 
-		if (rand.nextInt(2) == 1)
-			for (String haha : args) {
-				if (haha.contains("חחחחחחחחחחחחחח")) {
+		for (String haha : args) {
+			if (haha.contains("חחחחחחחחחחחחחח"))
+				if (rand.nextInt(2) == 1) {
 					CoronaBot.w = CoronaBot.w + 1;
 					if (CoronaBot.w == 1 && repeatCatcher == false) {
 						event.getChannel().sendTyping().queue();
@@ -779,7 +772,7 @@ public class Responds extends ListenerAdapter {
 						CoronaBot.w = 0;
 				}
 
-			}
+		}
 
 		for (String word : messageRaw.split(" "))
 			if (word.contentEquals("בוט") && !calledBot && !repeatCatcher) {

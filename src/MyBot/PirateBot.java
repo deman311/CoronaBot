@@ -60,7 +60,7 @@ public abstract class PirateBot {
 
 	public static void read(String[] lib) {
 		try {
-			Scanner read = new Scanner(new File(CoronaBot.FS_PATH + "/GameTitles.txt"));
+			Scanner read = new Scanner(new File(CoronaBot.FS_PATH + "/VRsearch/GameTitles.txt"));
 			int i = 0;
 			String line;
 			while (read.hasNext()) {
@@ -78,7 +78,7 @@ public abstract class PirateBot {
 
 	public static void write(String[] lib) {
 		try {
-			FileWriter writer = new FileWriter(new File(CoronaBot.FS_PATH + "/GameTitles.txt"));
+			FileWriter writer = new FileWriter(new File(CoronaBot.FS_PATH + "/VRsearch/GameTitles.txt"));
 			for (int i = 0; i < lib.length; i += 2)
 				writer.append(lib[i] + "\n");
 			writer.close();
