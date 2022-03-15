@@ -1,9 +1,9 @@
 NAME: AlphaBob
 CREATOR: Shwifty
-LEVEL: 1
-HP: 50
-ENG: 20
-EXP: 0
+LEVEL: 5
+HP: 250
+ENG: 40
+EXP: 38
 SKILLS: 
-EQP: 
-INV: 
+EQP: [w]Green Horn, [a]Chain Mail, [a]Copper Ring, 
+INV: Coins#43, Health Potion#6, Energy Potion#4, [w]Green Horn#1, [w]Weak Black Stinger#1, [w]Holy Knife#1, [a]Copper Ring#1, [a]Chain Mail#1, [w]Good Yellow Stinger#1, 

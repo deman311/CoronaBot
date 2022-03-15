@@ -61,3 +61,33 @@ price: 4
 damage: 14
 crit: 13 6
 description: Green Toothpick, is a sword with a Damage of 14, and a Critical Rate of 13 Damage with 6% Chance.
+#
+name: Weak Black Stinger
+price: 2
+damage: 10
+crit: 2 4
+description: Weak Black Stinger, is a sword with a Damage of 10, and a Critical Rate of 2 Damage with 4% Chance.
+#
+name: Green Horn
+price: 3
+damage: 16
+crit: 2 5
+description: Green Horn, is a sword with a Damage of 16, and a Critical Rate of 2 Damage with 5% Chance.
+#
+name: Holy Knife
+price: 12
+damage: 30
+crit: 7 20
+description: Holy Knife, is a sword with a Damage of 30, and a Critical Rate of 7 Damage with 20% Chance.
+#
+name: Good Yellow Stinger
+price: 19
+damage: 38
+crit: 11 4
+description: Good Yellow Stinger, is a sword with a Damage of 38, and a Critical Rate of 11 Damage with 4% Chance.
+#
+name: Green Horn
+price: 19
+damage: 48
+crit: 16 7
+description: Green Horn, is a sword with a Damage of 48, and a Critical Rate of 16 Damage with 7% Chance.

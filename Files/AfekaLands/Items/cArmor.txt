@@ -40,3 +40,15 @@ description: Weak Wool Pants, is a LEG with a Defense of 7
 price: 1
 def: 7
 type: LEG
+#
+name: Copper Ring
+description: Copper Ring, is a RING with a Defense of 7
+price: 4
+def: 7
+type: RING
+#
+name: Chain Mail
+description: Chain Mail, is a TORSO with a Defense of 8
+price: 3
+def: 8
+type: TORSO
