@@ -148,7 +148,7 @@ Then we loot: ![loot](/assets/AfekaLands/loot.png "Looting some things")
 ### Fighting ⚔️
 There are 2 kinds of attacks: swords and spells (currently there's only one implemented being the fireball🔥, but the basis code is written to support more spells - You can edit the spells.txt file and implement different spells with different damage, emojies and overall stats). Using these attacks you engage in battles in AfekaLands and fight various randomly generated enemies.
 
-![fight](/assets/AfekaLands/fastFight.gif "Swift encounter")
+![fight](/assets/AfekaLands/fastBattle.gif "Swift encounter")
 
 #### Random Stats 🧮
 The game includes Enemies, Weapons & Armor that, when created, generate with random stats and modifiers. Thus, Enemies can be: Though, Strong, Crazy, Small, Weak etc... Weapons & Armor can be Strong, Epic, Legendary, Weak etc...
