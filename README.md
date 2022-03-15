@@ -100,3 +100,49 @@ The titles are also being saved and compared each time to a txt file with previo
 ⚫ is regular titles. 🔴 is new titles.
 
 ![vrdoc](/assets/wordvrpic.png "VR titles output file example")
+
+## AfekaLands 🌲🧝‍
+This part is going to explore the 'Chat-RPG' that I started writing when being a first-year student. I worked on it throughout my first year and eventually left it to work on other projects that will be available to explore throught my GitHub page, **everything is written from scratch.** This project gave me great inspiration to explore different topics and practice my coding skills as well as my understanding of various topics though at the academia.
+
+### General Feature Introduction 🌠
+The game is called AfekaLands - Afeka being the name of the Engineering College I studied in. The general idea was to create a sort of randomly generated world and spawn enemies and shops on it that the player can fight and explore trying to reach the highest level possible. All of the game's controls are done by writting commands in the Discord chat and all of the 'UI' and feedback is done by drawing different menus - from fighting menus to shop menus to game stats.
+
+![intro](/assets/AfekaLands/intro.png "The intro you get when creating a new character")
+
+### The Map 🌳🟦⛰️
+The map is created by generation a TXT file that contains various symbols to represent 'tiles' that later will be translated to emojis in chat to represent the game map. The map contains trees, mountains and water - the latter being untraversable (either by enemies or the player), there are also reeds that can be generated close to water and the water tiles themselves are generated as a group using a function that 'spreads' it across the map array.
+
+![map](/assets/AfekaLands/map.png "All the various tiles")
+
+Traversing the map is done by using the ![wasd] keys and each move the CoronaBot updates/edits the same message in chat to not overflow it with messages and keep everything tidy and neat.
+
+![mapgif](/assets/AfekaLands/moveOnMap.gif "Moving around")
+
+### Shops 🏘️
+The map also contains a shop tile that is also sort of randomly generated, from its name to the owner's name, to the items it sells, to its stock even. The player gathers coins around the map by looting enemies after defeating them around the map - these in turn can be used to purchase things in the shops.
+
+![shop](/assets/AfekaLands/shop.png "A random shop")
+
+**Here is the looting process:**
+
+First we kill: ![deadmob](/assets/AfekaLands/deadmob.png "Die you crazy bat")
+
+Then we loot: ![loot](/assets/AfekaLands/loot.png "Looting some things")
+
+### Fighting ⚔️
+There are 2 kinds of attacks: swords and spells (currently there's only one implemented being the fireball🔥, but the basis code is written to support more spells - You can edit the spells.txt file and implement different spells with different damage, emojies and overall stats). Using these attacks you engage in battles in AfekaLands and fight various randomly generated enemies.
+
+![fight](/assets/AfekaLands/fastFight.gif "Swift encounter")
+
+#### Random Stats 🧮
+The game includes Enemies, Weapons & Armor that, when created, generate with random stats and modifiers. Thus, Enemies can be: Though, Strong, Crazy, Small, Weak etc... Weapons & Armor can be Strong, Epic, Legendary, Weak etc...
+
+![enemy stats](/assets/AfekaLands/fight.png "A random enemy") ![enemy stats](/assets/AfekaLands/equipment.png "A random enemy")
+
+### Equipment 🛡️
+The player has an option to view his inventory, wear and takeoff equipment and see the status effects of each one, all of this by writing specific chat commands.
+
+![inv](/assets/AfekaLands/inventory.png "A pretty empty inventory")
+
+![status](/assets/AfekaLands/status.png "Current status")
+![equip](/assets/AfekaLands/equipment.png "What am I wearing?")
