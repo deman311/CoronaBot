@@ -26,6 +26,8 @@ This feature uses Jsoup library in order to access the data at 'https://www.worl
 
 ![statistics](/assets/zombiespic.png "Corona Statistics")
 
+---
+
 ### Songs and Videos 📹
 A short exposition - I've found no way to access the search database or links from the YouTube site directly using the JDA bot, so I though of a workaround:
 * Google does support JDA access -> Search the song/video on google by constructing a search link.
@@ -62,6 +64,8 @@ Google search link construction:
 
 ![songs](/assets/songpic.png "Pulling the strings")
 
+---
+
 ### Car Quiz 🚗
 This feature downloads a random image from an online API of random cars: 'https://www.generatormix.com/random-car-model-generator', then it does the following:
 * There is a default title for the car pictures in the site but it is mostly very lacking and unimformative in terms of specific models, therefore I use Yandex Image Search in order to search the image and get the title of the most relevant image which is most of the times the exact model of the car.
@@ -73,11 +77,15 @@ This car title is saved in the answer variable that can be later pulled by typin
 
 ![carquiz](/assets/carpic.png "Car Quiz")
 
+---
+
 ### Poker 🎴
 One of my very first projects for the bot, The class generates a virtual deck which you can pull cards from (Removed from the array, non-repeating) and then, presumably after everybody have pulled a 'hand', you can pull the table cards (5 cards) and check who've won. This feature passed quite a lot of time when dealing with a speacially boring section in a lecture.
 - [ ] I've had a plan to write a game mechanic that actually controls the game flow and knows the rules - can tell who is the winner.
 
 ![poker](/assets/pokerpic.png "Playing Poker")
+
+---
 
 ### Daily Lecture Links ⏰
 This feature sends the relevant Zoom links to each of the users on the server by a txt file with a special format where the links are saved - which is prepared at every start of a semester and can be always updated when needed with new users and links.
@@ -85,6 +93,8 @@ This feature sends the relevant Zoom links to each of the users on the server by
 This specific feature runs on a thread. This thread is updated on the current time and date and every morning, not on weekends, between 7-8 AM sends the relevant links to everybody on the server via a private message on Discord.
 
 ![links](/assets/linkspic.png "The message format you receive")
+
+---
 
 ### VR Updates 🕶️
 As a casual VR player and a pirate at that 🏴‍☠️, I constantly check forums (e.a https://cs.rin.ru) for new releases of VR games. Therefore, I've created an automated process which scans the first X pages of the forum and searches for ones with the VR tag, then it constructs a Microsoft Word file with the names of the found game titles and the links to the specific page in the forum. The links are created using Hyperlinks in the word document, the specific implementation of the function is from here: https://stackoverflow.com/questions/49192481/how-to-create-hyperlinks-in-apache-poi-word.
@@ -100,6 +110,8 @@ The titles are also being saved and compared each time to a txt file with previo
 ⚫ is regular titles. 🔴 is new titles.
 
 ![vrdoc](/assets/wordvrpic.png "VR titles output file example")
+
+---
 
 ## AfekaLands 🌲🧝‍
 This part is going to explore the 'Chat-RPG' that I started writing when being a first-year student. I worked on it throughout my first year and eventually left it to work on other projects that will be available to explore throught my GitHub page, **everything is written from scratch.** This project gave me great inspiration to explore different topics and practice my coding skills as well as my understanding of various topics though at the academia.
@@ -117,6 +129,8 @@ The map is created by generation a TXT file that contains various symbols to rep
 Traversing the map is done by using the ![wasd] keys and each move the CoronaBot updates/edits the same message in chat to not overflow it with messages and keep everything tidy and neat.
 
 ![mapgif](/assets/AfekaLands/moveOnMap.gif "Moving around")
+
+---
 
 ### Shops 🏘️
 The map also contains a shop tile that is also sort of randomly generated, from its name to the owner's name, to the items it sells, to its stock even. The player gathers coins around the map by looting enemies after defeating them around the map - these in turn can be used to purchase things in the shops.
